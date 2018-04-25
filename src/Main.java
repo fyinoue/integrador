@@ -9,6 +9,6 @@ public class Main {
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.setVisible(true);
         
-        JButton botao = new JButton();
+        JButton botao = new JButton("Botao");
     }
 }
