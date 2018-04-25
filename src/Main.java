@@ -7,6 +7,6 @@ public class Main {
         janela.setSize(640,480);
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.setVisible(true);
-        /**/
+        /*Bunda*/
     }
 }
