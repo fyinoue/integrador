@@ -9,7 +9,7 @@ import javax.swing.JTextArea;
 
 public class AreaTexto {
     public static void main(String[] args) {
-        JLabel label = new JLabel("Área Texto: ");
+        JLabel label = new JLabel("Área Texto Modificada: ");
         
         FlowLayout layout = new FlowLayout(FlowLayout.LEFT);
         
@@ -25,7 +25,7 @@ public class AreaTexto {
         
         JFrame janela = new JFrame();
         janela.add(conteiner);
-        janela.setSize(350, 400);
+        janela.setSize(300, 200);
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.setVisible(true);
         janela.setLocationRelativeTo(null);
