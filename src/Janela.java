@@ -1,6 +1,4 @@
 
-
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
@@ -11,47 +9,62 @@ import javax.swing.JOptionPane;
 
 public class Janela extends JFrame{
     private JMenuBar barraMenu;
-    JMenu menuArquivo;
-    JMenu menuAjuda;
-    JMenuItem menuArquivoSair;
-    JMenuItem menuAjudaSobre;
-
+    private JMenu menuMenu;
+    private JMenu menuDiego;
+    private JMenu menuFelipe;
+    private JMenu menuMarcio;
+    private JMenu menuMatheus;
+    private JMenu menuPivante;
+    private JMenuItem menuMenuSair;
     
+    private JMenuItem menuFelipe01;
+    private TelaFelipe telaF01;
+
     public Janela(){
-        barraMenu = new JMenuBar();
-        menuArquivo = new JMenu("Arquivo");
-        menuArquivo.setMnemonic('A');
-        menuAjuda = new JMenu("Ajuda");
-        menuAjuda.setMnemonic('j');
-        menuArquivoSair = new JMenuItem("Sair");
-        menuArquivoSair.setMnemonic('r');
         
-        menuArquivoSair.addActionListener(new ActionListener() {
+        telaF01 = new TelaFelipe();
+        
+        barraMenu = new JMenuBar();
+        menuMenu = new JMenu("Menu");
+        menuMenu.setMnemonic('M');
+        menuMenuSair = new JMenuItem("Sair");
+        menuMenuSair.setMnemonic('r');
+        menuDiego = new JMenu("Diego");
+        menuFelipe = new JMenu("Felipe");
+        menuFelipe01 = new JMenuItem("Tela 01");
+        menuMarcio = new JMenu("Marcio");
+        menuMatheus = new JMenu("Matheus");
+        menuPivante = new JMenu("Pivante");
+        
+        menuMenuSair.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 System.exit(0);
             }
         });
         
-        JMenuItem menuAjudaSobre = new JMenuItem("Ajuda Sobre");
-        menuAjudaSobre.setMnemonic('S');
-        menuAjudaSobre.addActionListener(new ActionListener() {
+        menuFelipe01.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent ae) {
-               JOptionPane.showMessageDialog(null, "Aplicação 1.0");
+            public void actionPerformed(ActionEvent e) {
+                telaF01.setVisible(true);
             }
         });
         
-        menuArquivo.add(menuArquivoSair);
-        menuAjuda.add(menuAjudaSobre);
-        
-        barraMenu.add(menuArquivo);
-        barraMenu.add(menuAjuda);
+        menuMenu.add(menuMenuSair);
+        menuFelipe.add(menuFelipe01);
+        barraMenu.add(menuMenu);
+        barraMenu.add(menuDiego);
+        barraMenu.add(menuFelipe);
+        barraMenu.add(menuMarcio);
+        barraMenu.add(menuMatheus);
+        barraMenu.add(menuPivante);
         
         setJMenuBar(barraMenu);
+        
+        this.add(telaF01);
+        
         setSize(640,480);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
         
     }
     
