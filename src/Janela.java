@@ -19,10 +19,15 @@ public class Janela extends JFrame{
     
     private JMenuItem menuFelipe01;
     private TelaFelipe telaF01;
+    
+    private JMenuItem menuMatheus01;
+    private TelaMatheus telaMDS01;
 
     public Janela(){
         
         telaF01 = new TelaFelipe();
+        
+        telaMDS01 = new TelaMatheus();
         
         barraMenu = new JMenuBar();
         menuMenu = new JMenu("Menu");
@@ -34,6 +39,7 @@ public class Janela extends JFrame{
         menuFelipe01 = new JMenuItem("Tela 01");
         menuMarcio = new JMenu("Marcio");
         menuMatheus = new JMenu("Matheus");
+        menuMatheus01 = new JMenuItem("Tela Login");
         menuPivante = new JMenu("Pivante");
         
         menuMenuSair.addActionListener(new ActionListener() {
@@ -50,8 +56,16 @@ public class Janela extends JFrame{
             }
         });
         
+        menuMatheus01.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                    telaMDS01.setVisible(true);
+            }
+        });
+        
         menuMenu.add(menuMenuSair);
         menuFelipe.add(menuFelipe01);
+        menuMatheus.add(menuMatheus01);
         barraMenu.add(menuMenu);
         barraMenu.add(menuDiego);
         barraMenu.add(menuFelipe);
@@ -62,9 +76,11 @@ public class Janela extends JFrame{
         setJMenuBar(barraMenu);
         
         this.add(telaF01);
+        this.add(telaMDS01);
         
         setSize(640,480);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
         
     }
     
