@@ -1,8 +1,10 @@
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -63,10 +65,14 @@ public class TelaMatheus extends JPanel{
         painelCentral.add(painelSenha);
         painelCentral.add(painelBotao);
         
+        this.setBorder(BorderFactory.createLineBorder(Color.PINK));
         BorderLayout layout2 = new BorderLayout();
         this.setLayout(layout2);
         this.add(painelCentral);
-        this.setVisible(false);
+        
+        
+        
+        
     }
     
 }

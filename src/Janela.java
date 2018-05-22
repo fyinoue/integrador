@@ -1,11 +1,14 @@
 
+import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class Janela extends JFrame{
     private JMenuBar barraMenu;
@@ -16,6 +19,9 @@ public class Janela extends JFrame{
     private JMenu menuMatheus;
     private JMenu menuPivante;
     private JMenuItem menuMenuSair;
+    
+    private CardLayout leiaute;
+    private JPanel conteiner;
     
     private JMenuItem menuFelipe01;
     private TelaFelipe telaF01;
@@ -28,6 +34,9 @@ public class Janela extends JFrame{
         telaF01 = new TelaFelipe();
         
         telaMDS01 = new TelaMatheus();
+        
+        leiaute = new CardLayout();
+        conteiner = new JPanel();
         
         barraMenu = new JMenuBar();
         menuMenu = new JMenu("Menu");
@@ -52,14 +61,15 @@ public class Janela extends JFrame{
         menuFelipe01.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                telaF01.setVisible(true);
+                leiaute.show(conteiner, "F01");
+                
             }
         });
         
         menuMatheus01.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    telaMDS01.setVisible(true);
+                leiaute.show(conteiner, "MDS");
             }
         });
         
@@ -73,14 +83,24 @@ public class Janela extends JFrame{
         barraMenu.add(menuMatheus);
         barraMenu.add(menuPivante);
         
+        conteiner.setLayout(leiaute);
+        
+        JPanel painelInicial = new JPanel();
+        painelInicial.setBorder(BorderFactory.createLineBorder(Color.yellow));
+        
+        conteiner.add(painelInicial, "INICIAL");
+        conteiner.add(telaF01, "F01");
+        conteiner.add(telaMDS01, "MDS");
+        
+        
         setJMenuBar(barraMenu);
         
-        this.add(telaF01);
-        this.add(telaMDS01);
+
+        
+        add(conteiner);
         
         setSize(640,480);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
         
     }
     
