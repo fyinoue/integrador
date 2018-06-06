@@ -9,7 +9,7 @@ public class ConexaoBD {
     public static Connection getConexao() throws DadosException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            return DriverManager.getConnection("jdbc:mysql://localhost/sistemaAtoAta", "root", "");
+            return DriverManager.getConnection("jdbc:mysql://localhost/sistemaatoata", "root", "");
         } catch (ClassNotFoundException ex) {
             throw new DadosException("Erro ao carregar driver JDBC", ex);
         } catch (SQLException ex) {
