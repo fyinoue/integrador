@@ -65,7 +65,6 @@ public class TelaMatheus extends JPanel{
         painelCentral.add(painelSenha);
         painelCentral.add(painelBotao);
         
-        this.setBorder(BorderFactory.createLineBorder(Color.PINK));
         BorderLayout layout2 = new BorderLayout();
         this.setLayout(layout2);
         this.add(painelCentral);

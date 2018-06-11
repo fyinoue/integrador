@@ -1,4 +1,5 @@
 
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -24,16 +25,21 @@ public class Janela extends JFrame{
     private JPanel conteiner;
     
     private JMenuItem menuFelipe01;
-    private TelaFelipe telaF01;
+    private TelaFelipe telaFelipe01;
     
     private JMenuItem menuMatheus01;
-    private TelaMatheus telaMDS01;
+    private TelaMatheus telaMatheus01;
 
+    private JMenuItem menuPivante01;
+    private TelaPivante telaPivante01;
+    
     public Janela(){
         
-        telaF01 = new TelaFelipe();
+        telaFelipe01 = new TelaFelipe();
         
-        telaMDS01 = new TelaMatheus();
+        telaMatheus01 = new TelaMatheus();
+        
+        telaPivante01 = new TelaPivante();
         
         leiaute = new CardLayout();
         conteiner = new JPanel();
@@ -50,6 +56,7 @@ public class Janela extends JFrame{
         menuMatheus = new JMenu("Matheus");
         menuMatheus01 = new JMenuItem("Tela Login");
         menuPivante = new JMenu("Pivante");
+        menuPivante01 = new JMenuItem("Tela Pivante");
         
         menuMenuSair.addActionListener(new ActionListener() {
             @Override
@@ -61,7 +68,7 @@ public class Janela extends JFrame{
         menuFelipe01.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                leiaute.show(conteiner, "F01");
+                leiaute.show(conteiner, "FELIPE1");
                 
             }
         });
@@ -69,13 +76,21 @@ public class Janela extends JFrame{
         menuMatheus01.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                leiaute.show(conteiner, "MDS");
+                leiaute.show(conteiner, "MATHEUS1");
+            }
+        });
+        
+        menuPivante01.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                leiaute.show(conteiner, "PIVANTE1");
             }
         });
         
         menuMenu.add(menuMenuSair);
         menuFelipe.add(menuFelipe01);
         menuMatheus.add(menuMatheus01);
+        menuPivante.add(menuPivante01);
         barraMenu.add(menuMenu);
         barraMenu.add(menuDiego);
         barraMenu.add(menuFelipe);
@@ -86,18 +101,14 @@ public class Janela extends JFrame{
         conteiner.setLayout(leiaute);
         
         JPanel painelInicial = new JPanel();
-        painelInicial.setBorder(BorderFactory.createLineBorder(Color.yellow));
         
         conteiner.add(painelInicial, "INICIAL");
-        conteiner.add(telaF01, "F01");
-        conteiner.add(telaMDS01, "MDS");
-        
+        conteiner.add(telaFelipe01, "FELIPE1");
+        conteiner.add(telaMatheus01, "MATHEUS1");
+        conteiner.add(telaPivante01, "PIVANTE1");
         
         setJMenuBar(barraMenu);
-        
-
-        
-        add(conteiner);
+        this.add(conteiner, BorderLayout.CENTER);
         
         setSize(640,480);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

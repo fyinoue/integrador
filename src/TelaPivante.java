@@ -1,6 +1,4 @@
 
-package Pivante;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -63,10 +61,5 @@ public class TelaPivante extends JPanel{
         this.add(painelCentral);
         
     }
-    
-    
-   
-    
-    
     
 }
