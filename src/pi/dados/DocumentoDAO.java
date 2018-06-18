@@ -19,20 +19,19 @@ public class DocumentoDAO implements DAO<Documento>{
     @Override
     public void inserir(Documento entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
-        String sql = "INSERT INTO DOCUMENTO(TITULO, ACESSO, USUARIO_ID_USUARIO, "
+        String sql = "INSERT INTO DOCUMENTO(TITULO, ACESSO, "
                 + "LOCAL, DATA, HORÁRIO, ASSUNTO, CLASSIFICAÇÃO, ENCAMINHAMENTO) "
-                + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement comando = conexao.prepareStatement(sql);;
             comando.setString(1, entidade.getTitulo());
             comando.setInt(2, entidade.getAcesso());
-            comando.setInt(3, entidade.getUsuario_id_usuario());
-            comando.setString(4, entidade.getLocal());
-            comando.setString(5, entidade.getData());
-            comando.setString(6, entidade.getHorario());
-            comando.setString(7, entidade.getAssunto());
-            comando.setInt(8, entidade.getClassificacao());
-            comando.setString(9, entidade.getEncaminhamento());
+            comando.setString(3, entidade.getLocal());
+            comando.setString(4, entidade.getData());
+            comando.setString(5, entidade.getHorario());
+            comando.setString(6, entidade.getAssunto());
+            comando.setInt(7, entidade.getClassificacao());
+            comando.setString(8, entidade.getEncaminhamento());
             comando.execute();
             conexao.close();
         } catch (SQLDataException ex){
@@ -45,21 +44,20 @@ public class DocumentoDAO implements DAO<Documento>{
     @Override
     public void alterar(Documento entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
-        String sql = "UPDATE DOCUMENTO SET (TITULO=?, ACESSO=?, USUARIO_ID_USUARIO=?, "
-                + "LOCAL=?, DATA=?, HORÁRIO=?, ASSUNTO=?, CLASSIFICAÇÃO=?, ENCAMINHAMENTO=?) "
+        String sql = "UPDATE DOCUMENTO SET TITULO=?, ACESSO=?,"
+                + "LOCAL=?, DATA=?, HORÁRIO=?, ASSUNTO=?, CLASSIFICAÇÃO=?, ENCAMINHAMENTO=? "
                 + "WHERE ID_DOCUMENTO=?";
          try {
-            PreparedStatement comando = conexao.prepareStatement(sql);;
+            PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, entidade.getTitulo());
             comando.setInt(2, entidade.getAcesso());
-            comando.setInt(3, entidade.getUsuario_id_usuario());
-            comando.setString(4, entidade.getLocal());
-            comando.setString(5, entidade.getData());
-            comando.setString(6, entidade.getHorario());
-            comando.setString(7, entidade.getAssunto());
-            comando.setInt(8, entidade.getClassificacao());
-            comando.setString(9, entidade.getEncaminhamento());
-            comando.setInt(10, entidade.getId_documento());
+            comando.setString(3, entidade.getLocal());
+            comando.setString(4, entidade.getData());
+            comando.setString(5, entidade.getHorario());
+            comando.setString(6, entidade.getAssunto());
+            comando.setInt(7, entidade.getClassificacao());
+            comando.setString(8, entidade.getEncaminhamento());
+            comando.setInt(9, entidade.getId_documento());
             comando.execute();
             conexao.close();
         } catch (SQLDataException ex){
@@ -97,13 +95,12 @@ public class DocumentoDAO implements DAO<Documento>{
                 documento.setId_documento(resultado.getInt(1));
                 documento.setTitulo(resultado.getString(2));
                 documento.setAcesso(resultado.getInt(3));
-                documento.setUsuario_id_usuario(resultado.getInt(4));
-                documento.setLocal(resultado.getString(5));
-                documento.setData(resultado.getString(6));
-                documento.setHorario(resultado.getString(7));
-                documento.setAssunto(resultado.getString(8));
-                documento.setClassificacao(resultado.getInt(9));
-                documento.setEncaminhamento(resultado.getString(10));
+                documento.setLocal(resultado.getString(4));
+                documento.setData(resultado.getString(5));
+                documento.setHorario(resultado.getString(6));
+                documento.setAssunto(resultado.getString(7));
+                documento.setClassificacao(resultado.getInt(8));
+                documento.setEncaminhamento(resultado.getString(9));
             }
 
             conexao.close();
@@ -127,13 +124,12 @@ public class DocumentoDAO implements DAO<Documento>{
                 documento.setId_documento(resultado.getInt(1));
                 documento.setTitulo(resultado.getString(2));
                 documento.setAcesso(resultado.getInt(3));
-                documento.setUsuario_id_usuario(resultado.getInt(4));
-                documento.setLocal(resultado.getString(5));
-                documento.setData(resultado.getString(6));
-                documento.setHorario(resultado.getString(7));
-                documento.setAssunto(resultado.getString(8));
-                documento.setClassificacao(resultado.getInt(9));
-                documento.setEncaminhamento(resultado.getString(10));
+                documento.setLocal(resultado.getString(4));
+                documento.setData(resultado.getString(5));
+                documento.setHorario(resultado.getString(6));
+                documento.setAssunto(resultado.getString(7));
+                documento.setClassificacao(resultado.getInt(8));
+                documento.setEncaminhamento(resultado.getString(9));
                 lista.add(documento);
             }
 
