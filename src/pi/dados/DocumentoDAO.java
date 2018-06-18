@@ -14,7 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import pi.entidades.Documento;
 
-public class DocumentoDAO implements DAO<Documento>{
+public class DocumentoDAO implements IDocumentoDAO<Documento>{
 
     @Override
     public void inserir(Documento entidade) throws DadosException {

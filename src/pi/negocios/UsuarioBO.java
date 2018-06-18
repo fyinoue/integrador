@@ -6,7 +6,7 @@ import pi.dados.DadosException;
 import pi.dados.UsuarioDAO;
 import pi.entidades.Usuario;
 
-public class UsuarioBO implements BO<Usuario>{
+public class UsuarioBO implements IUsuarioBO<Usuario>{
 
     @Override
     public void validar(Usuario entidade) throws NegocioException {
@@ -62,12 +62,29 @@ public class UsuarioBO implements BO<Usuario>{
             if(usuario.getId_usuario() == 0){
                 throw new NegocioException("Usuário não encontrado");
             }
-            return usuario;
+            else {
+                return usuario;
+            }
         } catch (DadosException ex) {
             throw new NegocioException("Falha na operação", ex);
         }
     }
 
+    @Override
+    public boolean verificarLogin(String login, String senha) throws NegocioException {
+        UsuarioDAO dao = new UsuarioDAO();
+        boolean autenticado = false;
+        try {
+            autenticado = dao.verificarLogin(login, senha);
+            if(autenticado == false){
+                throw new NegocioException("Usuário não encontrado");
+            }
+            return autenticado;
+        } catch (DadosException ex) {
+            throw new NegocioException("Falha na operação", ex);
+        }
+    }
+    
     @Override
     public List<Usuario> listar() throws NegocioException {
         UsuarioDAO dao = new UsuarioDAO();
@@ -81,5 +98,6 @@ public class UsuarioBO implements BO<Usuario>{
             throw new NegocioException("Falha na operação", ex);
         }
     }
+
     
 }

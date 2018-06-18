@@ -7,7 +7,7 @@ import pi.dados.DadosException;
 import pi.dados.DocumentoDAO;
 import pi.entidades.Documento;
 
-public class DocumentoBO implements BO<Documento>{
+public class DocumentoBO implements IDocumentoBO<Documento>{
 
     @Override
     public void validar(Documento entidade) throws NegocioException {

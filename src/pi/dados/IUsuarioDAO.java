@@ -2,7 +2,7 @@ package pi.dados;
 
 import java.util.List;
 
-public interface DAO<T> {
+public interface IUsuarioDAO<T> {
 
     void inserir(T entidade) throws DadosException;
 
@@ -11,6 +11,8 @@ public interface DAO<T> {
     void excluir(T entidade) throws DadosException;
 
     T consultar(int id) throws DadosException;
+    
+    boolean verificarLogin(String login, String senha) throws DadosException;
 
     List<T> listar() throws DadosException;
 }

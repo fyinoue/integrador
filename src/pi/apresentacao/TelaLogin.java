@@ -5,16 +5,10 @@
  */
 package pi.apresentacao;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
-import pi.dados.ConexaoBD;
 import pi.dados.DadosException;
-import pi.entidades.Usuario;
+import pi.dados.UsuarioDAO;
 
 /**
  *
@@ -46,6 +40,8 @@ public class TelaLogin extends javax.swing.JFrame {
         campoSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login - Sistema de Atas e Atos");
+        setResizable(false);
 
         titulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -54,24 +50,12 @@ public class TelaLogin extends javax.swing.JFrame {
         textoLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         textoLogin.setText("Login:");
 
-        campoLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoLoginActionPerformed(evt);
-            }
-        });
-
-        textoSenha.setText("Sehna:");
+        textoSenha.setText("Senha:");
 
         botaoEntrar.setText("Entrar");
         botaoEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoEntrarActionPerformed(evt);
-            }
-        });
-
-        campoSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoSenhaActionPerformed(evt);
             }
         });
 
@@ -120,11 +104,8 @@ public class TelaLogin extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void campoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoLoginActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoLoginActionPerformed
 
     private void botaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntrarActionPerformed
         if(campoLogin.getText().isEmpty()){
@@ -134,14 +115,24 @@ public class TelaLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "O campo SENHA é obrigatório!");
         }    
         else{
-            JOptionPane.showMessageDialog(this, "Os campos foram escritos");
+            UsuarioDAO dao = new UsuarioDAO();
+            try {
+                boolean teste = dao.verificarLogin(campoLogin.getText(),campoSenha.getText());
+                if(teste == true) {
+                    JOptionPane.showMessageDialog(this, "Bem-Vindo!");
+                }
+                else {
+                    JOptionPane.showMessageDialog(this, "Usuário ou Senha INCORRETOS!");
+                }
+                TelaPrincipal janelaPrincipal = new TelaPrincipal();
+                this.setVisible(false);
+                janelaPrincipal.setVisible(true);
+            } catch (DadosException ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage());
+            }
         }
 
     }//GEN-LAST:event_botaoEntrarActionPerformed
-
-    private void campoSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoSenhaActionPerformed
 
     /**
      * @param args the command line arguments

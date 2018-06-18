@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import pi.entidades.Usuario;
 
-public class UsuarioDAO implements DAO<Usuario> {
+public class UsuarioDAO implements IUsuarioDAO<Usuario> {
 
     @Override
     public void inserir(Usuario entidade) throws DadosException {
@@ -87,6 +87,28 @@ public class UsuarioDAO implements DAO<Usuario> {
     }
 
     @Override
+    public boolean verificarLogin(String login, String senha) throws DadosException {
+        Connection conexao = ConexaoBD.getConexao();
+        String sql = "SELECT login FROM USUARIO WHERE login=? AND senha=?";
+        boolean autenticado = false;
+        try {
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setString(1, login);
+            comando.setString(2, senha);
+            ResultSet resultado = comando.executeQuery();
+            
+            if (resultado.next()) {
+                autenticado = true;
+            }
+            
+            conexao.close();
+            return autenticado;
+        } catch (SQLException ex) {
+            throw new DadosException("Erro na verificação de Login!", ex);
+        }
+    }
+
+    @Override
     public List<Usuario> listar() throws DadosException {
         List<Usuario> lista = new ArrayList<Usuario>();
         Connection conexao = ConexaoBD.getConexao();
@@ -109,4 +131,5 @@ public class UsuarioDAO implements DAO<Usuario> {
             throw new DadosException("Erro ao listar", ex);
         }
     }
+    
 }

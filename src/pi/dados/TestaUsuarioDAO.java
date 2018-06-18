@@ -13,9 +13,9 @@ public class TestaUsuarioDAO {
         }
         
         Usuario novo = new Usuario();
-        novo.setLogin("matheus5437");
-        novo.setSenha("10111998");
-        novo.setId_usuario(2);
+        novo.setLogin("admin");
+        novo.setSenha("admin");
+        novo.setId_usuario(1);
         
 //        dao.inserir(novo);
         

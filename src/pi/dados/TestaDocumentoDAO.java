@@ -25,7 +25,7 @@ public class TestaDocumentoDAO {
         novo.setClassificacao(5);
         novo.setEncaminhamento("Professor Cícero");
         
-//        dao.inserir(novo);
+        dao.inserir(novo);
         
         Documento consulta = dao.consultar(1);
         System.out.println("----------------------");

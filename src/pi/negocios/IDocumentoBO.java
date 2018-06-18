@@ -3,7 +3,7 @@ package pi.negocios;
 import pi.dados.DadosException;
 import java.util.List;
 
-public interface BO<T> {
+public interface IDocumentoBO<T> {
 
     void validar(T entidade) throws NegocioException;
 
