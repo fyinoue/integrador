@@ -1,14 +1,10 @@
 
 package pi.entidades;
 
-import java.sql.Date;
-import java.sql.Time;
-
 public class Documento {
     private int id_documento;
     private String titulo;
     private int acesso;
-    private int usuario_id_usuario;
     private String local;
     private String data;
     private String horario;
@@ -19,8 +15,7 @@ public class Documento {
     @Override
     public String toString() {
         return "Documento{" + "id_documento=" + id_documento + ", titulo=" + titulo + 
-                ", acesso=" + acesso + ", usuario_id_usuario=" + usuario_id_usuario + 
-                ", local=" + local + ", data=" + data + ", horario=" + horario + 
+                ", acesso=" + acesso  +  ", local=" + local + ", data=" + data + ", horario=" + horario + 
                 ", assunto=" + assunto + ", classificacao=" + classificacao + 
                 ", encaminhamento=" + encaminhamento + '}';
     }
@@ -47,14 +42,6 @@ public class Documento {
 
     public void setAcesso(int acesso) {
         this.acesso = acesso;
-    }
-
-    public int getUsuario_id_usuario() {
-        return usuario_id_usuario;
-    }
-
-    public void setUsuario_id_usuario(int usuario_id_usuario) {
-        this.usuario_id_usuario = usuario_id_usuario;
     }
 
     public String getLocal() {

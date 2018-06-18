@@ -18,7 +18,6 @@ public class TestaDocumentoDAO {
         Documento novo = new Documento();
         novo.setTitulo("Q Projeto Legal, Kappa");
         novo.setAcesso(51);
-        novo.setUsuario_id_usuario(4);
         novo.setLocal("Disneylândia");
         novo.setData("10/04/2037");
         novo.setHorario("10:45");
@@ -26,7 +25,13 @@ public class TestaDocumentoDAO {
         novo.setClassificacao(5);
         novo.setEncaminhamento("Professor Cícero");
         
-        dao.inserir(novo);
+//        dao.inserir(novo);
+        
+        Documento consulta = dao.consultar(1);
+        System.out.println("----------------------");
+        System.out.println(consulta);
+        
+//        dao.excluir(consulta);
 
     }
 }
