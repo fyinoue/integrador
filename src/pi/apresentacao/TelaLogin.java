@@ -108,25 +108,22 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntrarActionPerformed
-        if(campoLogin.getText().isEmpty()){
+        if (campoLogin.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "O campo LOGIN é obrigatório!");
-        }
-        else if(campoSenha.getText().isEmpty()){
+        } else if (campoSenha.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "O campo SENHA é obrigatório!");
-        }    
-        else{
+        } else {
             UsuarioDAO dao = new UsuarioDAO();
             try {
-                boolean teste = dao.verificarLogin(campoLogin.getText(),campoSenha.getText());
-                if(teste == true) {
+                boolean teste = dao.verificarLogin(campoLogin.getText(), campoSenha.getText());
+                if (teste == true) {
                     JOptionPane.showMessageDialog(this, "Bem-Vindo!");
-                }
-                else {
+                    TelaPrincipal janelaPrincipal = new TelaPrincipal();
+                    this.setVisible(false);
+                    janelaPrincipal.setVisible(true);
+                } else {
                     JOptionPane.showMessageDialog(this, "Usuário ou Senha INCORRETOS!");
                 }
-                TelaPrincipal janelaPrincipal = new TelaPrincipal();
-                this.setVisible(false);
-                janelaPrincipal.setVisible(true);
             } catch (DadosException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
             }
