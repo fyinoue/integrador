@@ -19,7 +19,20 @@ public class Documento {
                 ", assunto=" + assunto + ", classificacao=" + classificacao + 
                 ", encaminhamento=" + encaminhamento + '}';
     }
-
+    
+    public void criaDoc(int id_doc, String titu,int ace, String loc, String dat, String hor, String assun, int clas, String enca){
+        setId_documento(id_doc);
+        setTitulo(titu);
+        setAcesso(ace);
+        setLocal(loc);
+        setData(dat);
+        setHorario(hor);
+        setAssunto(assun);
+        setClassificacao(clas);
+        setEncaminhamento(enca);
+    }
+    
+    
     public int getId_documento() {
         return id_documento;
     }

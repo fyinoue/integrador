@@ -7,13 +7,16 @@ package pi.apresentacao;
 
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
+import pi.entidades.Documento;
+import pi.dados.DocumentoDAO;
+import pi.dados.DadosException;
 
 /**
  *
  * @author Felipe Yuri Inoue
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-
+int i=0;
     /**
      * Creates new form TelaPrincipal
      */
@@ -117,11 +120,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         painelInicioLayout.setVerticalGroup(
             painelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelInicioLayout.createSequentialGroup()
-                .addGap(210, 210, 210)
+                .addGap(201, 201, 201)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addContainerGap(307, Short.MAX_VALUE))
+                .addContainerGap(343, Short.MAX_VALUE))
         );
 
         conteiner.add(painelInicio, "card2");
@@ -607,6 +610,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
             else if(comboModelo.getSelectedIndex() == 2){
                 showTela("card4");
+               
             }
         }        
     }//GEN-LAST:event_botaoConfirmarActionPerformed
@@ -616,7 +620,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoCancelarActionPerformed
 
     private void botaoEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEnviarActionPerformed
-        JOptionPane.showMessageDialog(this, "Falta fazer");
+        Documento Doc = new Documento();
+        Doc.criaDoc(i,campoTitulo.getText(),comboTipo.getSelectedIndex(),campoLocal2.getText(),campoData2.getText(),campoHora2.getText(),campoAssunto.getText(),comboModelo.getSelectedIndex(),campoEncamin2.getText());
+      
+         DocumentoDAO dao = new DocumentoDAO();
+            try {
+                dao.inserir(Doc);
+                
+            } catch (DadosException ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage());
+            } 
+        
+        JOptionPane.showMessageDialog(this, "Criado com Sucesso!");
+        i++;
     }//GEN-LAST:event_botaoEnviarActionPerformed
 
     private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
