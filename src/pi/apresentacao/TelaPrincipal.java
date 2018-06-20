@@ -5,6 +5,9 @@
  */
 package pi.apresentacao;
 
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Felipe Yuri Inoue
@@ -17,6 +20,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public TelaPrincipal() {
         initComponents();
     }
+    private void showTela(String nome){
+        CardLayout card = (CardLayout)conteiner.getLayout();
+        card.show(conteiner, nome);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,15 +33,485 @@ public class TelaPrincipal extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
+        conteiner = new javax.swing.JPanel();
+        painelInicio = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        painelCriar = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        campoTitulo = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        comboTipo = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        comboModelo = new javax.swing.JComboBox<>();
+        botaoConfirmar = new javax.swing.JButton();
+        botaoCancelar = new javax.swing.JButton();
+        painelRolagemAta = new javax.swing.JScrollPane();
+        painelPrincipal = new javax.swing.JPanel();
+        painelDados2 = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        campoLocal2 = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        campoData2 = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        campoHora2 = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
+        jComboBox5 = new javax.swing.JComboBox<>();
+        jLabel27 = new javax.swing.JLabel();
+        jComboBox6 = new javax.swing.JComboBox<>();
+        jLabel28 = new javax.swing.JLabel();
+        campoEncamin2 = new javax.swing.JTextField();
+        painelConvidados = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        rolagemTabela = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        painelAssunto = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        rolagemAssuntos = new javax.swing.JScrollPane();
+        campoAssunto = new javax.swing.JTextArea();
+        painelApontamen = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        rolagemApontamen = new javax.swing.JScrollPane();
+        campoApontamen = new javax.swing.JTextArea();
+        painelDecisoes = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        rolagemDecisoes = new javax.swing.JScrollPane();
+        campoDecisoes = new javax.swing.JTextArea();
+        jLabel11 = new javax.swing.JLabel();
+        botaoEnviar = new javax.swing.JButton();
+        botaoSair = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuMenu = new javax.swing.JMenu();
+        menuItemInicio = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
         menuItemSair = new javax.swing.JMenuItem();
+        menuDocumento = new javax.swing.JMenu();
+        menuItemCriar = new javax.swing.JMenuItem();
+        menuSobre = new javax.swing.JMenu();
+        itemMenuSobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Atas e Atos");
 
+        conteiner.setLayout(new java.awt.CardLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Início");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Sistema de Atos e Atas");
+
+        javax.swing.GroupLayout painelInicioLayout = new javax.swing.GroupLayout(painelInicio);
+        painelInicio.setLayout(painelInicioLayout);
+        painelInicioLayout.setHorizontalGroup(
+            painelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        painelInicioLayout.setVerticalGroup(
+            painelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelInicioLayout.createSequentialGroup()
+                .addGap(210, 210, 210)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addContainerGap(307, Short.MAX_VALUE))
+        );
+
+        conteiner.add(painelInicio, "card2");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Criando Documento");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setText("Título: ");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setText("Tipo: ");
+
+        comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---------------", "Confidencial", "Restrito", "Livre" }));
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jLabel7, org.jdesktop.beansbinding.ObjectProperty.create(), comboTipo, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setText("Modelo: ");
+
+        comboModelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "----", "Ato", "Ata" }));
+
+        botaoConfirmar.setText("Confirmar");
+        botaoConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoConfirmarActionPerformed(evt);
+            }
+        });
+
+        botaoCancelar.setText("Cancelar");
+        botaoCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCancelarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout painelCriarLayout = new javax.swing.GroupLayout(painelCriar);
+        painelCriar.setLayout(painelCriarLayout);
+        painelCriarLayout.setHorizontalGroup(
+            painelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(painelCriarLayout.createSequentialGroup()
+                .addGroup(painelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelCriarLayout.createSequentialGroup()
+                        .addGap(235, 235, 235)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelCriarLayout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelCriarLayout.createSequentialGroup()
+                .addContainerGap(320, Short.MAX_VALUE)
+                .addComponent(botaoConfirmar)
+                .addGap(18, 18, 18)
+                .addComponent(botaoCancelar)
+                .addGap(300, 300, 300))
+        );
+        painelCriarLayout.setVerticalGroup(
+            painelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelCriarLayout.createSequentialGroup()
+                .addGap(105, 105, 105)
+                .addComponent(jLabel2)
+                .addGap(34, 34, 34)
+                .addGroup(painelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(painelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(comboModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addGroup(painelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botaoConfirmar)
+                    .addComponent(botaoCancelar))
+                .addContainerGap(324, Short.MAX_VALUE))
+        );
+
+        conteiner.add(painelCriar, "card3");
+
+        painelDados2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel22.setText("Local: ");
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel23.setText("->Daddos da Ata<-");
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel24.setText("Data: ");
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel25.setText("Horário: ");
+
+        jLabel26.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel26.setText("Tipo: ");
+
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-------------", "Reunião", "Assembléia", "Convenção" }));
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel27.setText("Classificação: ");
+
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---------", "Pública", "Privada", " " }));
+
+        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel28.setText("Encaminhamento: ");
+
+        javax.swing.GroupLayout painelDados2Layout = new javax.swing.GroupLayout(painelDados2);
+        painelDados2.setLayout(painelDados2Layout);
+        painelDados2Layout.setHorizontalGroup(
+            painelDados2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelDados2Layout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addGroup(painelDados2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel23)
+                    .addGroup(painelDados2Layout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addGroup(painelDados2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel24)
+                            .addComponent(jLabel25)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel26)
+                            .addComponent(jLabel27)
+                            .addComponent(jLabel28))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(painelDados2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(campoHora2)
+                            .addComponent(campoData2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoLocal2)
+                            .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoEncamin2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(113, Short.MAX_VALUE))
+        );
+        painelDados2Layout.setVerticalGroup(
+            painelDados2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelDados2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel23)
+                .addGap(18, 18, 18)
+                .addGroup(painelDados2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(campoLocal2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(painelDados2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(campoData2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(painelDados2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(campoHora2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(painelDados2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel26)
+                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(painelDados2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel27)
+                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(painelDados2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(campoEncamin2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        painelConvidados.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setText("->Convidados<-");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Nome", "Presente?"
+            }
+        ));
+        rolagemTabela.setViewportView(jTable1);
+
+        javax.swing.GroupLayout painelConvidadosLayout = new javax.swing.GroupLayout(painelConvidados);
+        painelConvidados.setLayout(painelConvidadosLayout);
+        painelConvidadosLayout.setHorizontalGroup(
+            painelConvidadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelConvidadosLayout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addComponent(jLabel8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelConvidadosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rolagemTabela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(154, 154, 154))
+        );
+        painelConvidadosLayout.setVerticalGroup(
+            painelConvidadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelConvidadosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8)
+                .addGap(18, 18, 18)
+                .addComponent(rolagemTabela, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
+        painelAssunto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setText("->Assuntos<-");
+
+        campoAssunto.setColumns(20);
+        campoAssunto.setRows(5);
+        campoAssunto.setPreferredSize(null);
+        rolagemAssuntos.setViewportView(campoAssunto);
+
+        javax.swing.GroupLayout painelAssuntoLayout = new javax.swing.GroupLayout(painelAssunto);
+        painelAssunto.setLayout(painelAssuntoLayout);
+        painelAssuntoLayout.setHorizontalGroup(
+            painelAssuntoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelAssuntoLayout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addComponent(jLabel7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAssuntoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rolagemAssuntos, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(162, 162, 162))
+        );
+        painelAssuntoLayout.setVerticalGroup(
+            painelAssuntoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelAssuntoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addComponent(rolagemAssuntos, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        painelApontamen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setText("->Apontamentos<-");
+
+        campoApontamen.setColumns(20);
+        campoApontamen.setRows(5);
+        rolagemApontamen.setViewportView(campoApontamen);
+
+        javax.swing.GroupLayout painelApontamenLayout = new javax.swing.GroupLayout(painelApontamen);
+        painelApontamen.setLayout(painelApontamenLayout);
+        painelApontamenLayout.setHorizontalGroup(
+            painelApontamenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelApontamenLayout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addComponent(jLabel9)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelApontamenLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rolagemApontamen, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(161, 161, 161))
+        );
+        painelApontamenLayout.setVerticalGroup(
+            painelApontamenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelApontamenLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9)
+                .addGap(18, 18, 18)
+                .addComponent(rolagemApontamen, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+
+        painelDecisoes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setText("->Decisões<-");
+
+        campoDecisoes.setColumns(20);
+        campoDecisoes.setRows(5);
+        rolagemDecisoes.setViewportView(campoDecisoes);
+
+        javax.swing.GroupLayout painelDecisoesLayout = new javax.swing.GroupLayout(painelDecisoes);
+        painelDecisoes.setLayout(painelDecisoesLayout);
+        painelDecisoesLayout.setHorizontalGroup(
+            painelDecisoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelDecisoesLayout.createSequentialGroup()
+                .addGap(92, 92, 92)
+                .addComponent(jLabel10)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelDecisoesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rolagemDecisoes, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(162, 162, 162))
+        );
+        painelDecisoesLayout.setVerticalGroup(
+            painelDecisoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelDecisoesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10)
+                .addGap(18, 18, 18)
+                .addComponent(rolagemDecisoes, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Ata");
+
+        botaoEnviar.setText("Enviar");
+        botaoEnviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoEnviarActionPerformed(evt);
+            }
+        });
+
+        botaoSair.setText("Sair");
+        botaoSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoSairActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout painelPrincipalLayout = new javax.swing.GroupLayout(painelPrincipal);
+        painelPrincipal.setLayout(painelPrincipalLayout);
+        painelPrincipalLayout.setHorizontalGroup(
+            painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelPrincipalLayout.createSequentialGroup()
+                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelPrincipalLayout.createSequentialGroup()
+                        .addGap(307, 307, 307)
+                        .addComponent(botaoEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(botaoSair, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(painelDados2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelConvidados, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelAssunto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelApontamen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelDecisoes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelPrincipalLayout.createSequentialGroup()
+                        .addGap(343, 343, 343)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(62, Short.MAX_VALUE))
+        );
+        painelPrincipalLayout.setVerticalGroup(
+            painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelPrincipalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11)
+                .addGap(18, 18, 18)
+                .addComponent(painelDados2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(painelConvidados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(painelAssunto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(painelApontamen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(painelDecisoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botaoEnviar)
+                    .addComponent(botaoSair))
+                .addGap(22, 22, 22))
+        );
+
+        painelRolagemAta.setViewportView(painelPrincipal);
+
+        conteiner.add(painelRolagemAta, "card4");
+
         menuMenu.setText("Menu");
+
+        menuItemInicio.setText("Início");
+        menuItemInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemInicioActionPerformed(evt);
+            }
+        });
+        menuMenu.add(menuItemInicio);
+        menuMenu.add(jSeparator1);
 
         menuItemSair.setMnemonic('s');
         menuItemSair.setText("Sair");
@@ -47,6 +524,30 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(menuMenu);
 
+        menuDocumento.setText("Documento");
+
+        menuItemCriar.setText("Criar Documento");
+        menuItemCriar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemCriarActionPerformed(evt);
+            }
+        });
+        menuDocumento.add(menuItemCriar);
+
+        jMenuBar1.add(menuDocumento);
+
+        menuSobre.setText("Sobre...");
+
+        itemMenuSobre.setText("Grupo 7");
+        itemMenuSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemMenuSobreActionPerformed(evt);
+            }
+        });
+        menuSobre.add(itemMenuSobre);
+
+        jMenuBar1.add(menuSobre);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -54,23 +555,138 @@ public class TelaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 784, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(conteiner, javax.swing.GroupLayout.DEFAULT_SIZE, 784, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 484, Short.MAX_VALUE)
+            .addGap(0, 637, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(conteiner, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE))
         );
+
+        bindingGroup.bind();
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void menuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSairActionPerformed
-        System.exit(0);
+        TelaLogin janelaLogin = new TelaLogin();
+        this.setVisible(false);
+        janelaLogin.setVisible(true);
     }//GEN-LAST:event_menuItemSairActionPerformed
 
+    private void itemMenuSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMenuSobreActionPerformed
+        TelaSobre janelaSobre = new TelaSobre(this, true);
+        janelaSobre.setVisible(true);
+        janelaSobre.setLocationRelativeTo(null);
+    }//GEN-LAST:event_itemMenuSobreActionPerformed
+
+    private void menuItemInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInicioActionPerformed
+        showTela("card2");
+    }//GEN-LAST:event_menuItemInicioActionPerformed
+
+    private void menuItemCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCriarActionPerformed
+        showTela("card3");
+    }//GEN-LAST:event_menuItemCriarActionPerformed
+
+    private void botaoConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConfirmarActionPerformed
+        if(campoTitulo.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "O campo TÍTULO é obrigatório!");
+        }
+        else if(comboTipo.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(this, "A caixa de combinação TIPO deve está com uma opção selecionada!");
+        }
+        else if(comboModelo.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(this, "A caixa de combinação MODELO deve está com uma opção selecionada!");
+        }
+        else{
+            if(comboModelo.getSelectedIndex() == 1){
+                JOptionPane.showMessageDialog(this, "Selecione Ata. Falta fazer a tela do Ato");
+            }
+            else if(comboModelo.getSelectedIndex() == 2){
+                showTela("card4");
+            }
+        }        
+    }//GEN-LAST:event_botaoConfirmarActionPerformed
+
+    private void botaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarActionPerformed
+        showTela("card2");
+    }//GEN-LAST:event_botaoCancelarActionPerformed
+
+    private void botaoEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEnviarActionPerformed
+        JOptionPane.showMessageDialog(this, "Falta fazer");
+    }//GEN-LAST:event_botaoEnviarActionPerformed
+
+    private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?",
+        "Confirmação",JOptionPane.YES_NO_OPTION);
+        
+        if(opcao == JOptionPane.YES_OPTION){
+            showTela("card3");
+        }        
+    }//GEN-LAST:event_botaoSairActionPerformed
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoCancelar;
+    private javax.swing.JButton botaoConfirmar;
+    private javax.swing.JButton botaoEnviar;
+    private javax.swing.JButton botaoSair;
+    private javax.swing.JTextArea campoApontamen;
+    private javax.swing.JTextArea campoAssunto;
+    private javax.swing.JTextField campoData2;
+    private javax.swing.JTextArea campoDecisoes;
+    private javax.swing.JTextField campoEncamin2;
+    private javax.swing.JTextField campoHora2;
+    private javax.swing.JTextField campoLocal2;
+    private javax.swing.JTextField campoTitulo;
+    private javax.swing.JComboBox<String> comboModelo;
+    private javax.swing.JComboBox<String> comboTipo;
+    private javax.swing.JPanel conteiner;
+    private javax.swing.JMenuItem itemMenuSobre;
+    private javax.swing.JComboBox<String> jComboBox5;
+    private javax.swing.JComboBox<String> jComboBox6;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JMenu menuDocumento;
+    private javax.swing.JMenuItem menuItemCriar;
+    private javax.swing.JMenuItem menuItemInicio;
     private javax.swing.JMenuItem menuItemSair;
     private javax.swing.JMenu menuMenu;
+    private javax.swing.JMenu menuSobre;
+    private javax.swing.JPanel painelApontamen;
+    private javax.swing.JPanel painelAssunto;
+    private javax.swing.JPanel painelConvidados;
+    private javax.swing.JPanel painelCriar;
+    private javax.swing.JPanel painelDados2;
+    private javax.swing.JPanel painelDecisoes;
+    private javax.swing.JPanel painelInicio;
+    private javax.swing.JPanel painelPrincipal;
+    private javax.swing.JScrollPane painelRolagemAta;
+    private javax.swing.JScrollPane rolagemApontamen;
+    private javax.swing.JScrollPane rolagemAssuntos;
+    private javax.swing.JScrollPane rolagemDecisoes;
+    private javax.swing.JScrollPane rolagemTabela;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
