@@ -15,6 +15,13 @@ public class DocumentoBO implements IDocumentoBO<Documento>{
     }
 
     @Override
+    public void validarCriacao(Documento entidade) throws NegocioException {
+        if(entidade.getTitulo().isEmpty()){
+            throw new NegocioException("O campo TITULO é obrigatório!");
+        }
+    }
+    
+    @Override
     public void inserir(Documento entidade) throws NegocioException {
         
     }

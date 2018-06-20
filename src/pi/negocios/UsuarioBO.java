@@ -12,7 +12,6 @@ public class UsuarioBO implements IUsuarioBO<Usuario>{
     public void validar(Usuario entidade) throws NegocioException {
         if(entidade.getLogin().isEmpty()){
             throw new NegocioException("O campo LOGIN é obrigatório!");
-            
         }
         if(entidade.getSenha().isEmpty()){
             throw new NegocioException("O campo SENHA é obrigatório!");
@@ -71,15 +70,17 @@ public class UsuarioBO implements IUsuarioBO<Usuario>{
     }
 
     @Override
-    public boolean verificarLogin(String login, String senha) throws NegocioException {
+    public boolean verificarLogin(Usuario entidade) throws NegocioException {
+        validar(entidade);
         UsuarioDAO dao = new UsuarioDAO();
-        boolean autenticado = false;
+        boolean autenticado;
         try {
-            autenticado = dao.verificarLogin(login, senha);
+            autenticado = dao.verificarLogin(entidade.getLogin(), entidade.getSenha());
             if(autenticado == false){
-                throw new NegocioException("Usuário não encontrado");
+                throw new NegocioException("Usuário/Senha incorretos");
+            } else {
+                return autenticado;
             }
-            return autenticado;
         } catch (DadosException ex) {
             throw new NegocioException("Falha na operação", ex);
         }

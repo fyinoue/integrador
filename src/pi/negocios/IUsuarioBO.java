@@ -15,7 +15,7 @@ public interface IUsuarioBO<T> {
 
     T consultar(int id) throws NegocioException;
     
-    boolean verificarLogin(String login, String senha) throws NegocioException;
+    boolean verificarLogin(T entidade) throws NegocioException;
 
     List<T> listar() throws NegocioException;
 }

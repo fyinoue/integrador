@@ -25,7 +25,7 @@ public class DocumentoDAO implements IDocumentoDAO<Documento>{
         try {
             PreparedStatement comando = conexao.prepareStatement(sql);;
             comando.setString(1, entidade.getTitulo());
-            comando.setInt(2, entidade.getAcesso());
+            comando.setString(2, entidade.getAcesso());
             comando.setString(3, entidade.getLocal());
             comando.setString(4, entidade.getData());
             comando.setString(5, entidade.getHorario());
@@ -50,7 +50,7 @@ public class DocumentoDAO implements IDocumentoDAO<Documento>{
          try {
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, entidade.getTitulo());
-            comando.setInt(2, entidade.getAcesso());
+            comando.setString(2, entidade.getAcesso());
             comando.setString(3, entidade.getLocal());
             comando.setString(4, entidade.getData());
             comando.setString(5, entidade.getHorario());
@@ -94,7 +94,7 @@ public class DocumentoDAO implements IDocumentoDAO<Documento>{
             if (resultado.next()) {
                 documento.setId_documento(resultado.getInt(1));
                 documento.setTitulo(resultado.getString(2));
-                documento.setAcesso(resultado.getInt(3));
+                documento.setAcesso(resultado.getString(3));
                 documento.setLocal(resultado.getString(4));
                 documento.setData(resultado.getString(5));
                 documento.setHorario(resultado.getString(6));
@@ -123,7 +123,7 @@ public class DocumentoDAO implements IDocumentoDAO<Documento>{
                 Documento documento = new Documento();
                 documento.setId_documento(resultado.getInt(1));
                 documento.setTitulo(resultado.getString(2));
-                documento.setAcesso(resultado.getInt(3));
+                documento.setAcesso(resultado.getString(3));
                 documento.setLocal(resultado.getString(4));
                 documento.setData(resultado.getString(5));
                 documento.setHorario(resultado.getString(6));

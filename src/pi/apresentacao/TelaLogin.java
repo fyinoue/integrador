@@ -5,10 +5,10 @@
  */
 package pi.apresentacao;
 
-import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
-import pi.dados.DadosException;
-import pi.dados.UsuarioDAO;
+import pi.entidades.Usuario;
+import pi.negocios.NegocioException;
+import pi.negocios.UsuarioBO;
 
 /**
  *
@@ -21,6 +21,7 @@ public class TelaLogin extends javax.swing.JFrame {
      */
     public TelaLogin() {
         initComponents();
+        this.getRootPane().setDefaultButton(botaoEntrar);
     }
 
     /**
@@ -41,6 +42,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login - Sistema de Atas e Atos");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
         titulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -108,27 +110,21 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntrarActionPerformed
-        if (campoLogin.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "O campo LOGIN é obrigatório!");
-        } else if (campoSenha.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "O campo SENHA é obrigatório!");
-        } else {
-            UsuarioDAO dao = new UsuarioDAO();
-            try {
-                boolean teste = dao.verificarLogin(campoLogin.getText(), campoSenha.getText());
-                if (teste == true) {
-                    JOptionPane.showMessageDialog(this, "Bem-Vindo!");
-                    TelaPrincipal janelaPrincipal = new TelaPrincipal();
-                    this.setVisible(false);
-                    janelaPrincipal.setVisible(true);
-                } else {
-                    JOptionPane.showMessageDialog(this, "Usuário ou Senha INCORRETOS!");
-                }
-            } catch (DadosException ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage());
+        Usuario usuario = new Usuario();
+        usuario.setLogin(campoLogin.getText());
+        usuario.setSenha(new String(campoSenha.getPassword()));
+        UsuarioBO bo = new UsuarioBO();
+        try {
+            boolean autenticado = bo.verificarLogin(usuario);
+            if(autenticado == true) {
+                JOptionPane.showMessageDialog(this, "Bem-Vindo!");
+                TelaPrincipal janelaPrincipal = new TelaPrincipal();
+                this.setVisible(false);
+                janelaPrincipal.setVisible(true);
             }
+        } catch (NegocioException ex) {
+            System.out.println("Dados do login inválidos. ["+ex+"]");
         }
-
     }//GEN-LAST:event_botaoEntrarActionPerformed
 
     /**

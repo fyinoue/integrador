@@ -4,13 +4,14 @@ package pi.entidades;
 public class Documento {
     private int id_documento;
     private String titulo;
-    private int acesso;
+    private String acesso;
     private String local;
     private String data;
     private String horario;
     private String assunto;
     private int classificacao;
     private String encaminhamento;
+    private String modelo;
 
     @Override
     public String toString() {
@@ -36,11 +37,11 @@ public class Documento {
         this.titulo = titulo;
     }
 
-    public int getAcesso() {
+    public String getAcesso() {
         return acesso;
     }
 
-    public void setAcesso(int acesso) {
+    public void setAcesso(String acesso) {
         this.acesso = acesso;
     }
 
@@ -90,6 +91,14 @@ public class Documento {
 
     public void setEncaminhamento(String encaminhamento) {
         this.encaminhamento = encaminhamento;
+    }
+    
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
     }
 
 }

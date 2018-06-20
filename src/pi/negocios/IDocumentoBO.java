@@ -7,6 +7,8 @@ public interface IDocumentoBO<T> {
 
     void validar(T entidade) throws NegocioException;
 
+    void validarCriacao(T entidade) throws NegocioException;
+    
     void inserir(T entidade) throws NegocioException;
 
     void alterar(T entidade) throws NegocioException;
