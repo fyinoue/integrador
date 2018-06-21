@@ -4,7 +4,6 @@ package pi.entidades;
 public class Documento {
     private int id_documento;
     private String titulo;
-    private String acesso;
     private String local;
     private String data;
     private String horario;
@@ -15,12 +14,12 @@ public class Documento {
 
     @Override
     public String toString() {
-        return "Documento{" + "id_documento=" + id_documento + ", titulo=" + titulo + 
-                ", acesso=" + acesso  +  ", local=" + local + ", data=" + data + ", horario=" + horario + 
+        return "Documento{" + "id_documento=" + id_documento + ", titulo=" + titulo +
+                ", local=" + local + ", data=" + data + ", horario=" + horario + 
                 ", assunto=" + assunto + ", classificacao=" + classificacao + 
                 ", encaminhamento=" + encaminhamento + '}';
-    }
-
+    }    
+    
     public int getId_documento() {
         return id_documento;
     }
@@ -35,14 +34,6 @@ public class Documento {
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
-    }
-
-    public String getAcesso() {
-        return acesso;
-    }
-
-    public void setAcesso(String acesso) {
-        this.acesso = acesso;
     }
 
     public String getLocal() {

@@ -3,13 +3,10 @@ package pi.dados;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLDataException;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import pi.entidades.Usuario;
 
 public class UsuarioDAO implements IUsuarioDAO<Usuario> {
@@ -24,10 +21,8 @@ public class UsuarioDAO implements IUsuarioDAO<Usuario> {
             comando.setString(2, entidade.getSenha());
             comando.execute();
             conexao.close();
-        } catch (SQLDataException ex) {
-            throw new DadosException("Erro ao inserir", ex);
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new DadosException("Erro ao inserir", ex);
         }
     }
 
@@ -42,10 +37,8 @@ public class UsuarioDAO implements IUsuarioDAO<Usuario> {
             comando.setInt(3, entidade.getId_usuario());
             comando.execute();
             conexao.close();
-        } catch (SQLDataException ex){
-            throw new DadosException("Erro ao alterar", ex);
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new DadosException("Erro ao alterar", ex);
         }
     }
 

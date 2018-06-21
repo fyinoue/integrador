@@ -2,6 +2,8 @@
 package pi.negocios;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pi.dados.DadosException;
 import pi.dados.UsuarioDAO;
 import pi.entidades.Usuario;

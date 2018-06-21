@@ -17,7 +17,6 @@ public class TestaDocumentoDAO {
 
         Documento novo = new Documento();
         novo.setTitulo("Q Projeto Legal, Kappa");
-        novo.setAcesso("51");
         novo.setLocal("Disneylândia");
         novo.setData("10/04/2037");
         novo.setHorario("10:45");

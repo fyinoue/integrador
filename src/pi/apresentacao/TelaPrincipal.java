@@ -12,13 +12,15 @@ import javax.swing.JOptionPane;
 import pi.entidades.Documento;
 import pi.negocios.DocumentoBO;
 import pi.negocios.NegocioException;
+import pi.dados.DocumentoDAO;
+import pi.dados.DadosException;
 
 /**
  *
  * @author Felipe Yuri Inoue
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-
+int i=0;
     /**
      * Creates new form TelaPrincipal
      */
@@ -45,11 +47,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         painelCriar = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        labelTitulo = new javax.swing.JLabel();
         campoTitulo = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        comboTipo = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
+        labelClassificacao = new javax.swing.JLabel();
+        comboClassificacao = new javax.swing.JComboBox<>();
+        labelModelo = new javax.swing.JLabel();
         comboModelo = new javax.swing.JComboBox<>();
         botaoConfirmar = new javax.swing.JButton();
         botaoCancelar = new javax.swing.JButton();
@@ -98,6 +100,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         conteiner.setLayout(new java.awt.CardLayout());
 
+        painelInicio.setMaximumSize(new java.awt.Dimension(800, 600));
+        painelInicio.setMinimumSize(new java.awt.Dimension(800, 600));
+        painelInicio.setName(""); // NOI18N
+        painelInicio.setPreferredSize(new java.awt.Dimension(800, 600));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Início");
@@ -110,35 +117,35 @@ public class TelaPrincipal extends javax.swing.JFrame {
         painelInicio.setLayout(painelInicioLayout);
         painelInicioLayout.setHorizontalGroup(
             painelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         painelInicioLayout.setVerticalGroup(
             painelInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelInicioLayout.createSequentialGroup()
-                .addGap(210, 210, 210)
+                .addGap(201, 201, 201)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addContainerGap(307, Short.MAX_VALUE))
+                .addContainerGap(343, Short.MAX_VALUE))
         );
 
         conteiner.add(painelInicio, "card2");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Criando Documento");
+        jLabel2.setText("Criar Documento");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setText("Título: ");
+        labelTitulo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelTitulo.setText("Título: ");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel5.setText("Tipo: ");
+        labelClassificacao.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelClassificacao.setText("Classificação:");
 
-        comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Confidencial", "Restrito", "Livre" }));
+        comboClassificacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Confidencial", "Restrito", "Livre" }));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel6.setText("Modelo: ");
+        labelModelo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelModelo.setText("Modelo: ");
 
         comboModelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ato", "Ata" }));
 
@@ -162,31 +169,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
             painelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(painelCriarLayout.createSequentialGroup()
+                .addGap(235, 235, 235)
                 .addGroup(painelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelCriarLayout.createSequentialGroup()
-                        .addGap(235, 235, 235)
-                        .addComponent(jLabel4)
+                        .addComponent(labelTitulo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(painelCriarLayout.createSequentialGroup()
-                        .addGroup(painelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(painelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(painelCriarLayout.createSequentialGroup()
-                                .addGap(250, 250, 250)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelCriarLayout.createSequentialGroup()
-                                .addContainerGap()
                                 .addComponent(botaoCancelar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addGroup(painelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botaoConfirmar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(botaoConfirmar))
                             .addGroup(painelCriarLayout.createSequentialGroup()
-                                .addComponent(jLabel6)
+                                .addComponent(labelClassificacao)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(comboModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(249, Short.MAX_VALUE))
+                                .addComponent(comboClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34)
+                                .addComponent(labelModelo)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(248, Short.MAX_VALUE))
         );
         painelCriarLayout.setVerticalGroup(
             painelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,13 +198,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(34, 34, 34)
                 .addGroup(painelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(labelTitulo)
                     .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(painelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
+                    .addComponent(labelClassificacao)
+                    .addComponent(comboClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelModelo)
                     .addComponent(comboModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(painelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -511,7 +514,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 784, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(conteiner, javax.swing.GroupLayout.DEFAULT_SIZE, 784, Short.MAX_VALUE))
+                .addComponent(conteiner, javax.swing.GroupLayout.PREFERRED_SIZE, 784, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -547,10 +550,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void botaoConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConfirmarActionPerformed
         Documento doc = new Documento();
         doc.setTitulo(campoTitulo.getText());
-        doc.setAcesso(comboTipo.getSelectedItem().toString());
+        doc.setClassificacao(comboClassificacao.getSelectedIndex());
         doc.setModelo(comboModelo.getSelectedItem().toString());
         
+        System.out.println(comboClassificacao.getSelectedIndex());
+        
         DocumentoBO bo = new DocumentoBO();
+        
         try {
             bo.validarCriacao(doc);
             if(comboModelo.getSelectedItem().toString() == "Ato") {
@@ -578,7 +584,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoSairActionPerformed
 
     private void botaoEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEnviarActionPerformed
-        JOptionPane.showMessageDialog(this, "Falta fazer");
+        Documento doc = new Documento();
+        doc.setTitulo(campoTitulo.getText());
+        doc.setLocal(campoLocal2.getText());
+        doc.setData(campoData2.getText());
+        doc.setHorario(campoHora2.getText());
+        doc.setAssunto(campoAssunto.getText());
+        doc.setClassificacao(comboModelo.getSelectedIndex());
+        doc.setEncaminhamento(campoEncamin2.getText());
+        
+        DocumentoBO bo = new DocumentoBO();
+        try {
+            bo.inserir(doc);
+            JOptionPane.showMessageDialog(this, "Criado com Sucesso!");
+        } catch (NegocioException ex) {
+            System.out.println("Erro ao criar documento completo. ["+ex+"]");
+        }
     }//GEN-LAST:event_botaoEnviarActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -594,8 +615,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField campoHora2;
     private javax.swing.JTextField campoLocal2;
     private javax.swing.JTextField campoTitulo;
+    private javax.swing.JComboBox<String> comboClassificacao;
     private javax.swing.JComboBox<String> comboModelo;
-    private javax.swing.JComboBox<String> comboTipo;
     private javax.swing.JPanel conteiner;
     private javax.swing.JMenuItem itemMenuSobre;
     private javax.swing.JComboBox<String> jComboBox5;
@@ -610,12 +631,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel labelClassificacao;
+    private javax.swing.JLabel labelModelo;
+    private javax.swing.JLabel labelTitulo;
     private javax.swing.JMenu menuDocumento;
     private javax.swing.JMenuItem menuItemCriar;
     private javax.swing.JMenuItem menuItemInicio;

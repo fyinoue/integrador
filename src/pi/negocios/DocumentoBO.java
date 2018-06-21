@@ -23,7 +23,27 @@ public class DocumentoBO implements IDocumentoBO<Documento>{
     
     @Override
     public void inserir(Documento entidade) throws NegocioException {
-        
+        if(entidade.getTitulo().isEmpty()) {
+            throw new NegocioException("O campo TITULO é obrigatório!");
+        }
+        if(entidade.getLocal().isEmpty()) {
+            throw new NegocioException("O campo LOCAL é obrigatório!");
+        }
+        if(entidade.getData().isEmpty()) {
+            throw new NegocioException("O campo DATA é obrigatório!");
+        }
+        if(entidade.getHorario().isEmpty()) {
+            throw new NegocioException("O campo HORARIO é obrigatório!");
+        }
+        if(entidade.getAssunto().isEmpty()) {
+            throw new NegocioException("O campo ASSUNTO é obrigatório!");
+        }
+        if(entidade.getClassificacao() == 0) {
+            throw new NegocioException("O campo CLASSIFICAÇÃO é obrigatório!");
+        }
+        if(entidade.getEncaminhamento().isEmpty()) {
+            throw new NegocioException("O campo ENCAMINHAMENTO é obrigatório!");
+        }
     }
 
     @Override
