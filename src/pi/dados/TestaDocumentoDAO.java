@@ -17,13 +17,14 @@ public class TestaDocumentoDAO {
 
         Documento novo = new Documento();
         novo.setTitulo("Q Projeto Legal, Kappa");
-        novo.setAcesso("51");
+        novo.setAcesso("confidencial");
         novo.setLocal("Disneylândia");
         novo.setData("10/04/2037");
         novo.setHorario("10:45");
         novo.setAssunto("Passar no PI");
         novo.setClassificacao(5);
         novo.setEncaminhamento("Professor Cícero");
+        novo.setModelo("ato");
         
         dao.inserir(novo);
         

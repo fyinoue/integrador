@@ -1,4 +1,3 @@
-
 package pi.dados;
 
 import java.sql.Connection;
@@ -14,14 +13,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import pi.entidades.Documento;
 
-public class DocumentoDAO implements IDocumentoDAO<Documento>{
+public class DocumentoDAO implements IDocumentoDAO<Documento> {
 
     @Override
     public void inserir(Documento entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "INSERT INTO DOCUMENTO(TITULO, ACESSO, "
-                + "LOCAL, DATA, HORÁRIO, ASSUNTO, CLASSIFICAÇÃO, ENCAMINHAMENTO) "
-                + "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+                + "LOCAL, DATA, HORÁRIO, ASSUNTO, CLASSIFICAÇÃO, ENCAMINHAMENTO, MODELO) "
+                + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement comando = conexao.prepareStatement(sql);;
             comando.setString(1, entidade.getTitulo());
@@ -32,9 +31,10 @@ public class DocumentoDAO implements IDocumentoDAO<Documento>{
             comando.setString(6, entidade.getAssunto());
             comando.setInt(7, entidade.getClassificacao());
             comando.setString(8, entidade.getEncaminhamento());
+            comando.setString(9, entidade.getModelo());
             comando.execute();
             conexao.close();
-        } catch (SQLDataException ex){
+        } catch (SQLDataException ex) {
             throw new DadosException("Erro ao inserir", ex);
         } catch (SQLException ex) {
             Logger.getLogger(DocumentoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -45,9 +45,9 @@ public class DocumentoDAO implements IDocumentoDAO<Documento>{
     public void alterar(Documento entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "UPDATE DOCUMENTO SET TITULO=?, ACESSO=?,"
-                + "LOCAL=?, DATA=?, HORÁRIO=?, ASSUNTO=?, CLASSIFICAÇÃO=?, ENCAMINHAMENTO=? "
-                + "WHERE ID_DOCUMENTO=?";
-         try {
+                + "LOCAL=?, DATA=?, HORÁRIO=?, ASSUNTO=?, CLASSIFICAÇÃO=?, ENCAMINHAMENTO=?, "
+                + "MODELO=? WHERE ID_DOCUMENTO=?";
+        try {
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, entidade.getTitulo());
             comando.setString(2, entidade.getAcesso());
@@ -57,10 +57,11 @@ public class DocumentoDAO implements IDocumentoDAO<Documento>{
             comando.setString(6, entidade.getAssunto());
             comando.setInt(7, entidade.getClassificacao());
             comando.setString(8, entidade.getEncaminhamento());
-            comando.setInt(9, entidade.getId_documento());
+            comando.setString(9, entidade.getModelo());
+            comando.setInt(10, entidade.getId_documento());
             comando.execute();
             conexao.close();
-        } catch (SQLDataException ex){
+        } catch (SQLDataException ex) {
             throw new DadosException("Erro ao alterar", ex);
         } catch (SQLException ex) {
             Logger.getLogger(DocumentoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -101,6 +102,7 @@ public class DocumentoDAO implements IDocumentoDAO<Documento>{
                 documento.setAssunto(resultado.getString(7));
                 documento.setClassificacao(resultado.getInt(8));
                 documento.setEncaminhamento(resultado.getString(9));
+                documento.setModelo(resultado.getString(10));
             }
 
             conexao.close();
@@ -130,6 +132,7 @@ public class DocumentoDAO implements IDocumentoDAO<Documento>{
                 documento.setAssunto(resultado.getString(7));
                 documento.setClassificacao(resultado.getInt(8));
                 documento.setEncaminhamento(resultado.getString(9));
+                documento.setModelo(resultado.getString(10));
                 lista.add(documento);
             }
 
@@ -138,5 +141,5 @@ public class DocumentoDAO implements IDocumentoDAO<Documento>{
         } catch (SQLException ex) {
             throw new DadosException("Erro ao listar", ex);
         }
-    }    
+    }
 }
