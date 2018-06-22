@@ -43,6 +43,8 @@ public class TelaLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login - Sistema de Atas e Atos");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMaximumSize(new java.awt.Dimension(400, 300));
+        setMinimumSize(new java.awt.Dimension(400, 300));
         setResizable(false);
 
         titulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N

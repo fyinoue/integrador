@@ -19,18 +19,20 @@ public class DocumentoDAO implements IDocumentoDAO<Documento>{
     @Override
     public void inserir(Documento entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
-        String sql = "INSERT INTO DOCUMENTO(TITULO, ACESSO, "
-                + "LOCAL, DATA, HORÁRIO, ASSUNTO, CLASSIFICAÇÃO, ENCAMINHAMENTO) "
-                + "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO DOCUMENTO(TITULO, LOCAL, DATA, HORÁRIO, "
+                + "ASSUNTO, CLASSIFICAÇÃO, ENCAMINHAMENTO, MODELO, APONTAMENTO) "
+                + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement comando = conexao.prepareStatement(sql);;
             comando.setString(1, entidade.getTitulo());
-            comando.setString(3, entidade.getLocal());
-            comando.setString(4, entidade.getData());
-            comando.setString(5, entidade.getHorario());
-            comando.setString(6, entidade.getAssunto());
-            comando.setInt(7, entidade.getClassificacao());
-            comando.setString(8, entidade.getEncaminhamento());
+            comando.setString(2, entidade.getLocal());
+            comando.setString(3, entidade.getData());
+            comando.setString(4, entidade.getHorario());
+            comando.setString(5, entidade.getAssunto());
+            comando.setInt(6, entidade.getClassificacao());
+            comando.setString(7, entidade.getEncaminhamento());
+            comando.setString(8, entidade.getModelo());
+            comando.setString(9, entidade.getApontamento());
             comando.execute();
             conexao.close();
         } catch (SQLDataException ex){

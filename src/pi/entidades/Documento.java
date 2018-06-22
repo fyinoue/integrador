@@ -11,6 +11,7 @@ public class Documento {
     private int classificacao;
     private String encaminhamento;
     private String modelo;
+    private String apontamento;
 
     @Override
     public String toString() {
@@ -90,6 +91,14 @@ public class Documento {
 
     public void setModelo(String modelo) {
         this.modelo = modelo;
+    }
+
+    public String getApontamento() {
+        return apontamento;
+    }
+
+    public void setApontamento(String apontamento) {
+        this.apontamento = apontamento;
     }
 
 }
