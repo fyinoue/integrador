@@ -1,10 +1,10 @@
+
 package pi.negocios;
 
-import pi.dados.DadosException;
 import java.util.List;
 
-public interface IDocumentoBO<T> {
 
+public interface IAtaBO<T> {
     void validar(T entidade) throws NegocioException;
 
     void validarCriacao(T entidade) throws NegocioException;
