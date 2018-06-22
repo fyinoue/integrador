@@ -1,8 +1,6 @@
-
 package pi.dados;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLDataException;
@@ -12,12 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import pi.entidades.Documento;
+import pi.entidades.Ata;
 
-public class DocumentoDAO implements IDocumentoDAO<Documento>{
+public class AtaDAO implements IAtaDAO<Ata>{
 
     @Override
-    public void inserir(Documento entidade) throws DadosException {
+    public void inserir(Ata entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "INSERT INTO DOCUMENTO(TITULO, LOCAL, DATA, HORÁRIO, "
                 + "ASSUNTO, CLASSIFICAÇÃO, ENCAMINHAMENTO, MODELO, APONTAMENTO) "
@@ -35,20 +33,20 @@ public class DocumentoDAO implements IDocumentoDAO<Documento>{
             comando.setString(9, entidade.getApontamento());
             comando.execute();
             conexao.close();
-        } catch (SQLDataException ex){
+        } catch (SQLDataException ex) {
             throw new DadosException("Erro ao inserir", ex);
         } catch (SQLException ex) {
-            Logger.getLogger(DocumentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AtaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
-    public void alterar(Documento entidade) throws DadosException {
+    public void alterar(Ata entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "UPDATE DOCUMENTO SET TITULO=?, ACESSO=?,"
                 + "LOCAL=?, DATA=?, HORÁRIO=?, ASSUNTO=?, CLASSIFICAÇÃO=?, ENCAMINHAMENTO=? "
                 + "WHERE ID_DOCUMENTO=?";
-         try {
+        try {
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, entidade.getTitulo());
             comando.setString(3, entidade.getLocal());
@@ -60,15 +58,15 @@ public class DocumentoDAO implements IDocumentoDAO<Documento>{
             comando.setInt(9, entidade.getId_documento());
             comando.execute();
             conexao.close();
-        } catch (SQLDataException ex){
+        } catch (SQLDataException ex) {
             throw new DadosException("Erro ao alterar", ex);
         } catch (SQLException ex) {
-            Logger.getLogger(DocumentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AtaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
-    public void excluir(Documento entidade) throws DadosException {
+    public void excluir(Ata entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "DELETE FROM DOCUMENTO WHERE ID_DOCUMENTO=?";
         try {
@@ -82,36 +80,36 @@ public class DocumentoDAO implements IDocumentoDAO<Documento>{
     }
 
     @Override
-    public Documento consultar(int id) throws DadosException {
+    public Ata consultar(int id) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "SELECT * FROM DOCUMENTO WHERE ID_DOCUMENTO=?";
-        Documento documento = new Documento();
+        Ata ata = new Ata();
         try {
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setInt(1, id);
             ResultSet resultado = comando.executeQuery();
 
             if (resultado.next()) {
-                documento.setId_documento(resultado.getInt(1));
-                documento.setTitulo(resultado.getString(2));
-                documento.setLocal(resultado.getString(3));
-                documento.setData(resultado.getString(4));
-                documento.setHorario(resultado.getString(5));
-                documento.setAssunto(resultado.getString(6));
-                documento.setClassificacao(resultado.getInt(7));
-                documento.setEncaminhamento(resultado.getString(8));
+                ata.setId_documento(resultado.getInt(1));
+                ata.setTitulo(resultado.getString(2));
+                ata.setLocal(resultado.getString(3));
+                ata.setData(resultado.getString(4));
+                ata.setHorario(resultado.getString(5));
+                ata.setAssunto(resultado.getString(6));
+                ata.setClassificacao(resultado.getInt(7));
+                ata.setEncaminhamento(resultado.getString(8));
             }
 
             conexao.close();
-            return documento;
+            return ata;
         } catch (SQLException ex) {
             throw new DadosException("Erro ao consultar", ex);
         }
     }
 
     @Override
-    public List<Documento> listar() throws DadosException {
-        List<Documento> lista = new ArrayList<Documento>();
+    public List<Ata> listar() throws DadosException {
+        List<Ata> lista = new ArrayList<Ata>();
         Connection conexao = ConexaoBD.getConexao();
         String sql = "SELECT * FROM DOCUMENTO";
         try {
@@ -119,16 +117,16 @@ public class DocumentoDAO implements IDocumentoDAO<Documento>{
             ResultSet resultado = comando.executeQuery(sql);
 
             while (resultado.next()) {
-                Documento documento = new Documento();
-                documento.setId_documento(resultado.getInt(1));
-                documento.setTitulo(resultado.getString(2));
-                documento.setLocal(resultado.getString(3));
-                documento.setData(resultado.getString(4));
-                documento.setHorario(resultado.getString(5));
-                documento.setAssunto(resultado.getString(6));
-                documento.setClassificacao(resultado.getInt(7));
-                documento.setEncaminhamento(resultado.getString(8));
-                lista.add(documento);
+                Ata ata = new Ata();
+                ata.setId_documento(resultado.getInt(1));
+                ata.setTitulo(resultado.getString(2));
+                ata.setLocal(resultado.getString(3));
+                ata.setData(resultado.getString(4));
+                ata.setHorario(resultado.getString(5));
+                ata.setAssunto(resultado.getString(6));
+                ata.setClassificacao(resultado.getInt(7));
+                ata.setEncaminhamento(resultado.getString(8));
+                lista.add(ata);
             }
 
             conexao.close();
@@ -136,5 +134,6 @@ public class DocumentoDAO implements IDocumentoDAO<Documento>{
         } catch (SQLException ex) {
             throw new DadosException("Erro ao listar", ex);
         }
-    }    
+    }
+    
 }

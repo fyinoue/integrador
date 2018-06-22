@@ -1,50 +1,45 @@
 package pi.negocios;
 
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import pi.dados.AtoDAO;
 import pi.dados.DadosException;
-import pi.dados.DocumentoDAO;
-import pi.entidades.Documento;
+import pi.entidades.Ato;
 
-public class DocumentoBO implements IDocumentoBO<Documento>{
+public class AtoBO implements IAtoBO<Ato>{
 
     @Override
-    public void validar(Documento entidade) throws NegocioException {
-        if(entidade.getTitulo().isEmpty()) {
+    public void validar(Ato entidade) throws NegocioException {
+        if (entidade.getTitulo().isEmpty()) {
             throw new NegocioException("O campo TITULO é obrigatório!");
         }
-        if(entidade.getLocal().isEmpty()) {
+        if (entidade.getLocal().isEmpty()) {
             throw new NegocioException("O campo LOCAL é obrigatório!");
         }
-        if(entidade.getData().isEmpty()) {
+        if (entidade.getData().isEmpty()) {
             throw new NegocioException("O campo DATA é obrigatório!");
         }
-        if(entidade.getHorario().isEmpty()) {
+        if (entidade.getHorario().isEmpty()) {
             throw new NegocioException("O campo HORARIO é obrigatório!");
         }
-        if(entidade.getAssunto().isEmpty()) {
+        if (entidade.getAssunto().isEmpty()) {
             throw new NegocioException("O campo ASSUNTO é obrigatório!");
         }
-        if(entidade.getEncaminhamento().isEmpty()) {
+        if (entidade.getEncaminhamento().isEmpty()) {
             throw new NegocioException("O campo ENCAMINHAMENTO é obrigatório!");
-        }
-        if(entidade.getApontamento().isEmpty()) {
-            throw new NegocioException("O campo APONTAMENTO é obrigatório!");
         }
     }
 
     @Override
-    public void validarCriacao(Documento entidade) throws NegocioException {
-        if(entidade.getTitulo().isEmpty()){
+    public void validarCriacao(Ato entidade) throws NegocioException {
+        if (entidade.getTitulo().isEmpty()) {
             throw new NegocioException("O campo TITULO é obrigatório!");
         }
     }
-    
+
     @Override
-    public void inserir(Documento entidade) throws NegocioException {
+    public void inserir(Ato entidade) throws NegocioException {
         validar(entidade);
-        DocumentoDAO dao = new DocumentoDAO();
+        AtoDAO dao = new AtoDAO();
         try {
             dao.inserir(entidade);
         } catch (DadosException ex) {
@@ -53,35 +48,35 @@ public class DocumentoBO implements IDocumentoBO<Documento>{
     }
 
     @Override
-    public void alterar(Documento entidade) throws NegocioException {
+    public void alterar(Ato entidade) throws NegocioException {
         
     }
 
     @Override
-    public void excluir(Documento entidade) throws NegocioException {
+    public void excluir(Ato entidade) throws NegocioException {
         
     }
 
     @Override
-    public Documento consultar(int id) throws NegocioException {
-        DocumentoDAO dao = new DocumentoDAO();
+    public Ato consultar(int id) throws NegocioException {
+        AtoDAO dao = new AtoDAO();
         try {
-            Documento documento = dao.consultar(id);
-            if(documento.getId_documento() == 0){
+            Ato ato = dao.consultar(id);
+            if (ato.getId_documento() == 0) {
                 throw new NegocioException("Documento não encontrado");
             }
-            return documento;
+            return ato;
         } catch (DadosException ex) {
             throw new NegocioException("Falha na operação", ex);
         }
     }
 
     @Override
-    public List<Documento> listar() throws NegocioException {
-        DocumentoDAO dao = new DocumentoDAO();
+    public List<Ato> listar() throws NegocioException {
+        AtoDAO dao = new AtoDAO();
         try {
-            List<Documento> lista = dao.listar();
-            if(lista.isEmpty()){
+            List<Ato> lista = dao.listar();
+            if (lista.isEmpty()) {
                 throw new NegocioException("Nenhum documento cadastrado");
             }
             return lista;
