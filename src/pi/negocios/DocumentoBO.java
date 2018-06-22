@@ -11,18 +11,6 @@ public class DocumentoBO implements IDocumentoBO<Documento>{
 
     @Override
     public void validar(Documento entidade) throws NegocioException {
-        
-    }
-
-    @Override
-    public void validarCriacao(Documento entidade) throws NegocioException {
-        if(entidade.getTitulo().isEmpty()){
-            throw new NegocioException("O campo TITULO é obrigatório!");
-        }
-    }
-    
-    @Override
-    public void inserir(Documento entidade) throws NegocioException {
         if(entidade.getTitulo().isEmpty()) {
             throw new NegocioException("O campo TITULO é obrigatório!");
         }
@@ -38,11 +26,29 @@ public class DocumentoBO implements IDocumentoBO<Documento>{
         if(entidade.getAssunto().isEmpty()) {
             throw new NegocioException("O campo ASSUNTO é obrigatório!");
         }
-        if(entidade.getClassificacao() == 0) {
-            throw new NegocioException("O campo CLASSIFICAÇÃO é obrigatório!");
-        }
         if(entidade.getEncaminhamento().isEmpty()) {
             throw new NegocioException("O campo ENCAMINHAMENTO é obrigatório!");
+        }
+        if(entidade.getApontamento().isEmpty()) {
+            throw new NegocioException("O campo APONTAMENTO é obrigatório!");
+        }
+    }
+
+    @Override
+    public void validarCriacao(Documento entidade) throws NegocioException {
+        if(entidade.getTitulo().isEmpty()){
+            throw new NegocioException("O campo TITULO é obrigatório!");
+        }
+    }
+    
+    @Override
+    public void inserir(Documento entidade) throws NegocioException {
+        validar(entidade);
+        DocumentoDAO dao = new DocumentoDAO();
+        try {
+            dao.inserir(entidade);
+        } catch (DadosException ex) {
+            throw new NegocioException("Falha na operação", ex);
         }
     }
 
