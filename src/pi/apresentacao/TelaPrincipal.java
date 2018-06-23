@@ -781,12 +781,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         painelAlterar_labelAtoFinal.setText("Atos Finalizados:");
         painelAlterarAto.add(painelAlterar_labelAtoFinal);
 
-        AtoBO bo = new AtoBO();
+        AtoBO atobo = new AtoBO();
         List<Ato> listaAto;
         ArrayList<String> listaAtosComboBox = new ArrayList<String>();
 
         try {
-            listaAto = bo.listar();
+            listaAto = atobo.listar();
             for (Ato ato : listaAto) {
                 listaAtosComboBox.add("["+ato.getId_documento()+"] "+ato.getTitulo());
             }
@@ -824,7 +824,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         painelAlterar_labelAtaFinal.setText("Atas Finalizadas:");
         painelAlterarAta.add(painelAlterar_labelAtaFinal);
 
-        painelAlterar_campoAtaFinal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        AtaBO atabo = new AtaBO();
+        List<Ata> listaAta;
+        ArrayList<String> listaAtasComboBox = new ArrayList<String>();
+
+        try {
+            listaAta = atabo.listar();
+            for (Ata ata : listaAta) {
+                listaAtasComboBox.add("["+ata.getId_documento()+"] "+ata.getTitulo());
+            }
+        } catch (NegocioException ex) {
+            System.out.println("Erro ao criar ComboBox Ata. [" + ex + "]");
+        }
+        painelAlterar_campoAtaFinal.setModel(new DefaultComboBoxModel(listaAtasComboBox.toArray()));
         painelAlterarAta.add(painelAlterar_campoAtaFinal);
 
         botaoAlterarAta.setText("Alterar Ata");
@@ -1526,7 +1538,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         AtaBO bo = new AtaBO();
         Ata ata = new Ata();
         try {
-            ata = bo.consultar(1);
+            getIdDocSelected();
+            ata = bo.consultar(idDocSelected);
             alteraAta_campoLocal.setText(ata.getLocal());
             alteraAta_campoData.setText(ata.getData());
             alteraAta_campoHorario.setText(ata.getHorario());
