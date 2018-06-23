@@ -114,7 +114,7 @@ public class AtoDAO implements IAtoDAO<Ato>{
         try {
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, "Ato");
-            ResultSet resultado = comando.executeQuery(sql);
+            ResultSet resultado = comando.executeQuery();
 
             while (resultado.next()) {
                 Ato ato = new Ato();
