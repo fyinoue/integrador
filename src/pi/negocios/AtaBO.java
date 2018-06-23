@@ -41,28 +41,6 @@ public class AtaBO implements IAtaBO<Ata>{
             throw new NegocioException("O campo TITULO é obrigatório!");
         }
     }
-    
-    @Override
-    public void validarAlteracao(Ata entidade) throws NegocioException {
-        if (entidade.getLocal().isEmpty()) {
-            throw new NegocioException("O campo LOCAL é obrigatório!");
-        }
-        if (entidade.getData().isEmpty()) {
-            throw new NegocioException("O campo DATA é obrigatório!");
-        }
-        if (entidade.getHorario().isEmpty()) {
-            throw new NegocioException("O campo HORARIO é obrigatório!");
-        }
-        if (entidade.getAssunto().isEmpty()) {
-            throw new NegocioException("O campo ASSUNTO é obrigatório!");
-        }
-        if (entidade.getEncaminhamento().isEmpty()) {
-            throw new NegocioException("O campo ENCAMINHAMENTO é obrigatório!");
-        }
-        if (entidade.getApontamento().isEmpty()) {
-            throw new NegocioException("O campo APONTAMENTO é obrigatório!");
-        }
-    }
 
     @Override
     public void inserir(Ata entidade) throws NegocioException {
@@ -77,7 +55,7 @@ public class AtaBO implements IAtaBO<Ata>{
 
     @Override
     public void alterar(Ata entidade) throws NegocioException {
-        validarAlteracao(entidade);
+        validar(entidade);
         AtaDAO dao = new AtaDAO();
         try {
             dao.alterar(entidade);
@@ -88,7 +66,12 @@ public class AtaBO implements IAtaBO<Ata>{
 
     @Override
     public void excluir(Ata entidade) throws NegocioException {
-        
+        AtaDAO dao = new AtaDAO();
+        try {
+            dao.excluir(entidade);
+        } catch (DadosException ex) {
+            throw new NegocioException("Falha na operação", ex);
+        }
     }
 
     @Override

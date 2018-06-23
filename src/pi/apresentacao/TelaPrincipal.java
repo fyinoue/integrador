@@ -1569,8 +1569,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         int opcao = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?",
                 "Confirmação", JOptionPane.YES_NO_OPTION);
         if (opcao == JOptionPane.YES_OPTION) {
-            //Aki dentro colocar a logica!
-
+            Ato ato = new Ato();
+            getIdDocSelected(1);
+            ato.setId_documento(idDocSelected);
+            
+            AtoBO bo = new AtoBO();
+            try {
+                bo.excluir(ato);
+                JOptionPane.showMessageDialog(this, "Excluido com Sucesso!");
+            } catch (NegocioException ex) {
+                Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_botaoExcluirAtoActionPerformed
 
@@ -1578,8 +1587,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         int opcao = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?",
                 "Confirmação", JOptionPane.YES_NO_OPTION);
         if (opcao == JOptionPane.YES_OPTION) {
-            //Aki dentro colocar a logica!
-
+            Ata ata = new Ata();
+            getIdDocSelected(2);
+            ata.setId_documento(idDocSelected);
+            
+            AtaBO bo = new AtaBO();
+            try {
+                bo.excluir(ata);
+                JOptionPane.showMessageDialog(this, "Excluido com Sucesso!");
+            } catch (NegocioException ex) {
+                Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_botaoExcluirAtaActionPerformed
 
