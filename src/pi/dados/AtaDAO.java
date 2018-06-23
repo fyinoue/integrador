@@ -44,8 +44,8 @@ public class AtaDAO implements IAtaDAO<Ata>{
     public void alterar(Ata entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         String sql = "UPDATE DOCUMENTO SET TITULO=?, ACESSO=?,"
-                + "LOCAL=?, DATA=?, HORÁRIO=?, ASSUNTO=?, CLASSIFICAÇÃO=?, ENCAMINHAMENTO=? "
-                + "WHERE ID_DOCUMENTO=?";
+                + "LOCAL=?, DATA=?, HORÁRIO=?, ASSUNTO=?, CLASSIFICAÇÃO=?, ENCAMINHAMENTO=?, "
+                + "APONTAMENTO=? WHERE ID_DOCUMENTO=?";
         try {
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, entidade.getTitulo());
@@ -55,7 +55,8 @@ public class AtaDAO implements IAtaDAO<Ata>{
             comando.setString(6, entidade.getAssunto());
             comando.setInt(7, entidade.getClassificacao());
             comando.setString(8, entidade.getEncaminhamento());
-            comando.setInt(9, entidade.getId_documento());
+            comando.setString(9, entidade.getApontamento());
+            comando.setInt(10, entidade.getId_documento());
             comando.execute();
             conexao.close();
         } catch (SQLDataException ex) {
@@ -82,7 +83,8 @@ public class AtaDAO implements IAtaDAO<Ata>{
     @Override
     public Ata consultar(int id) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
-        String sql = "SELECT * FROM DOCUMENTO WHERE ID_DOCUMENTO=?";
+        String sql = "SELECT ID_DOCUMENTO, TITULO, LOCAL, DATA, HORÁRIO, ASSUNTO"
+                + ", CLASSIFICAÇÃO, ENCAMINHAMENTO, MODELO, APONTAMENTO FROM DOCUMENTO WHERE ID_DOCUMENTO=?";
         Ata ata = new Ata();
         try {
             PreparedStatement comando = conexao.prepareStatement(sql);
@@ -98,6 +100,7 @@ public class AtaDAO implements IAtaDAO<Ata>{
                 ata.setAssunto(resultado.getString(6));
                 ata.setClassificacao(resultado.getInt(7));
                 ata.setEncaminhamento(resultado.getString(8));
+                ata.setApontamento(resultado.getString(9));//<---
             }
 
             conexao.close();
@@ -126,6 +129,7 @@ public class AtaDAO implements IAtaDAO<Ata>{
                 ata.setAssunto(resultado.getString(6));
                 ata.setClassificacao(resultado.getInt(7));
                 ata.setEncaminhamento(resultado.getString(8));
+                ata.setApontamento(resultado.getString(9));
                 lista.add(ata);
             }
 
