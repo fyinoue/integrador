@@ -59,8 +59,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         criaAto_campoAssunto.setText("");
     }
 
-    private void getIdDocSelected() {
-        String string_teste = (String) painelAlterar_campoAtoFinal.getSelectedItem();
+    private void getIdDocSelected(int tipo) {
+        String string_teste = new String();
+        if(tipo == 1) {
+            string_teste = (String) painelAlterar_campoAtoFinal.getSelectedItem();
+        } else if(tipo == 2) {
+            string_teste = (String) painelAlterar_campoAtaFinal.getSelectedItem();
+        }
         if (string_teste.charAt(2) == ']') {
             idDocSelected = Integer.parseInt(new StringBuilder().append(string_teste.charAt(1)).toString());
         } else {
@@ -1520,7 +1525,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Ato ato = new Ato();
  
         try {
-            getIdDocSelected();
+            getIdDocSelected(1);
             ato = bo.consultar(idDocSelected);//mudar esse conultar 
             alteraAto_campoLocal.setText(ato.getLocal());
             alteraAto_campoData.setText(ato.getData());
@@ -1538,7 +1543,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         AtaBO bo = new AtaBO();
         Ata ata = new Ata();
         try {
-            getIdDocSelected();
+            getIdDocSelected(2);
+            System.out.println(idDocSelected);
             ata = bo.consultar(idDocSelected);
             alteraAta_campoLocal.setText(ata.getLocal());
             alteraAta_campoData.setText(ata.getData());

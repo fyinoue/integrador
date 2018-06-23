@@ -132,7 +132,6 @@ public class AtoDAO implements IAtoDAO<Ato>{
             conexao.close();
             return lista;
         } catch (SQLException ex) {
-            System.out.println("!!!!!!!!!!!!!!!!!!!!"+ex.getMessage());
             throw new DadosException("Erro ao listar", ex);
         }
     }

@@ -100,7 +100,7 @@ public class AtaDAO implements IAtaDAO<Ata>{
                 ata.setAssunto(resultado.getString(6));
                 ata.setClassificacao(resultado.getInt(7));
                 ata.setEncaminhamento(resultado.getString(8));
-                ata.setApontamento(resultado.getString(9));//<---
+                ata.setApontamento(resultado.getString(10));
             }
 
             conexao.close();
@@ -130,7 +130,7 @@ public class AtaDAO implements IAtaDAO<Ata>{
                 ata.setAssunto(resultado.getString(6));
                 ata.setClassificacao(resultado.getInt(7));
                 ata.setEncaminhamento(resultado.getString(8));
-                ata.setApontamento(resultado.getString(9));
+                ata.setApontamento(resultado.getString(10));
                 lista.add(ata);
             }
 
