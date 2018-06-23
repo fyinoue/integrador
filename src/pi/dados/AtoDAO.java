@@ -110,9 +110,10 @@ public class AtoDAO implements IAtoDAO<Ato>{
     public List<Ato> listar() throws DadosException {
         List<Ato> lista = new ArrayList<Ato>();
         Connection conexao = ConexaoBD.getConexao();
-        String sql = "SELECT * FROM DOCUMENTO";
+        String sql = "SELECT * FROM DOCUMENTO WHERE MODELO=?";
         try {
-            Statement comando = conexao.createStatement();
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setString(1, "Ato");
             ResultSet resultado = comando.executeQuery(sql);
 
             while (resultado.next()) {
