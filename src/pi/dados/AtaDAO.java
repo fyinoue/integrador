@@ -100,7 +100,7 @@ public class AtaDAO implements IAtaDAO<Ata>{
                 ata.setAssunto(resultado.getString(6));
                 ata.setClassificacao(resultado.getInt(7));
                 ata.setEncaminhamento(resultado.getString(8));
-                ata.setApontamento(resultado.getString(9));//<---
+                ata.setApontamento(resultado.getString(10));
             }
 
             conexao.close();
@@ -114,10 +114,11 @@ public class AtaDAO implements IAtaDAO<Ata>{
     public List<Ata> listar() throws DadosException {
         List<Ata> lista = new ArrayList<Ata>();
         Connection conexao = ConexaoBD.getConexao();
-        String sql = "SELECT * FROM DOCUMENTO";
+        String sql = "SELECT * FROM DOCUMENTO WHERE MODELO=?";
         try {
-            Statement comando = conexao.createStatement();
-            ResultSet resultado = comando.executeQuery(sql);
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setString(1, "Ata");
+            ResultSet resultado = comando.executeQuery();
 
             while (resultado.next()) {
                 Ata ata = new Ata();
@@ -129,7 +130,7 @@ public class AtaDAO implements IAtaDAO<Ata>{
                 ata.setAssunto(resultado.getString(6));
                 ata.setClassificacao(resultado.getInt(7));
                 ata.setEncaminhamento(resultado.getString(8));
-                ata.setApontamento(resultado.getString(9));
+                ata.setApontamento(resultado.getString(10));
                 lista.add(ata);
             }
 

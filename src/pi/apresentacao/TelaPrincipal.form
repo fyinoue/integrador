@@ -1208,7 +1208,7 @@
                     </Property>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="AtoBO bo = new AtoBO();&#xa;List&lt;Ato&gt; listaAto;&#xa;ArrayList&lt;String&gt; listaAtosComboBox = new ArrayList&lt;String&gt;();&#xa;&#xa;    try {&#xa;        listaAto = bo.listar();&#xa;        for (Ato ato : listaAto) {&#xa;            listaAtosComboBox.add(&quot;[&quot;+ato.getId_documento()+&quot;] &quot;+ato.getTitulo());&#xa;        }&#xa;    } catch (NegocioException ex) {&#xa;        System.out.println(&quot;Erro ao criar ComboBox Ato. [&quot; + ex + &quot;]&quot;);&#xa;    }"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="AtoBO atobo = new AtoBO();&#xa;List&lt;Ato&gt; listaAto;&#xa;ArrayList&lt;String&gt; listaAtosComboBox = new ArrayList&lt;String&gt;();&#xa;&#xa;    try {&#xa;        listaAto = atobo.listar();&#xa;        for (Ato ato : listaAto) {&#xa;            listaAtosComboBox.add(&quot;[&quot;+ato.getId_documento()+&quot;] &quot;+ato.getTitulo());&#xa;        }&#xa;    } catch (NegocioException ex) {&#xa;        System.out.println(&quot;Erro ao criar ComboBox Ato. [&quot; + ex + &quot;]&quot;);&#xa;    }"/>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
@@ -1252,16 +1252,12 @@
                 </Component>
                 <Component class="javax.swing.JComboBox" name="painelAlterar_campoAtaFinal">
                   <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                      </StringArray>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="new DefaultComboBoxModel(listaAtasComboBox.toArray())" type="code"/>
                     </Property>
                   </Properties>
                   <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="AtaBO atabo = new AtaBO();&#xa;List&lt;Ata&gt; listaAta;&#xa;ArrayList&lt;String&gt; listaAtasComboBox = new ArrayList&lt;String&gt;();&#xa;&#xa;    try {&#xa;        listaAta = atabo.listar();&#xa;        for (Ata ata : listaAta) {&#xa;            listaAtasComboBox.add(&quot;[&quot;+ata.getId_documento()+&quot;] &quot;+ata.getTitulo());&#xa;        }&#xa;    } catch (NegocioException ex) {&#xa;        System.out.println(&quot;Erro ao criar ComboBox Ata. [&quot; + ex + &quot;]&quot;);&#xa;    }"/>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
