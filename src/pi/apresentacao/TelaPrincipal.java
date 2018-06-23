@@ -61,9 +61,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void getIdDocSelected(int tipo) {
         String string_teste = new String();
-        if(tipo == 1) {
+        if (tipo == 1) {
             string_teste = (String) painelAlterar_campoAtoFinal.getSelectedItem();
-        } else if(tipo == 2) {
+        } else if (tipo == 2) {
             string_teste = (String) painelAlterar_campoAtaFinal.getSelectedItem();
         }
         if (string_teste.charAt(2) == ']') {
@@ -605,11 +605,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(criaAto_labelEncaminhamento))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(criaAto_painelDadosDoAtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(criaAto_campoData, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(criaAto_campoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(criaAto_campoEncaminhamento)
-                    .addComponent(criaAto_campoHorario)
-                    .addComponent(criaAto_campoLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(criaAto_campoLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(criaAto_painelDadosDoAtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(criaAto_campoHorario, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(criaAto_campoData, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)))
                 .addGap(174, 174, 174))
         );
         criaAto_painelDadosDoAtoLayout.setVerticalGroup(
@@ -1155,11 +1156,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addComponent(alteraAto_labelEncaminhamento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(alteraAto_painelDadosDoAtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(alteraAto_campoData, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(alteraAto_campoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(alteraAto_campoEncaminhamento)
-                    .addComponent(alteraAto_campoHorario)
-                    .addComponent(alteraAto_campoLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(alteraAto_campoLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(alteraAto_painelDadosDoAtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(alteraAto_campoHorario, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(alteraAto_campoData, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)))
                 .addGap(174, 174, 174))
         );
         alteraAto_painelDadosDoAtoLayout.setVerticalGroup(
@@ -1523,7 +1525,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void botaoAlterarAtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAlterarAtoActionPerformed
         AtoBO bo = new AtoBO();
         Ato ato = new Ato();
- 
+
         try {
             getIdDocSelected(1);
             ato = bo.consultar(idDocSelected);//mudar esse conultar 
@@ -1542,6 +1544,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void botaoAlterarAtaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAlterarAtaActionPerformed
         AtaBO bo = new AtaBO();
         Ata ata = new Ata();
+
         try {
             getIdDocSelected(2);
             ata = bo.consultar(idDocSelected);
@@ -1552,7 +1555,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             alteraAta_campoEncamin.setText(ata.getEncaminhamento());
             alteraAta_campoAssunto.setText(ata.getAssunto());
             alteraAta_campoApont.setText(ata.getApontamento());
-
         } catch (NegocioException ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1599,7 +1601,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoCancelarAtaAlteracaoActionPerformed
 
     private void botaoSalvarAtaAlteracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarAtaAlteracaoActionPerformed
-        // botao de salvar da tela de alteração da Ata
+        // tentei resolver o problema mas não consigo
+        Ata ata = new Ata();
+        getIdDocSelected(2);
+        ata.setLocal(alteraAta_campoLocal.getText());
+        ata.setData(alteraAta_campoData.getText());
+        ata.setHorario(alteraAta_campoHorario.getText());
+        ata.setAssunto(alteraAta_campoAssunto.getText());
+        ata.setEncaminhamento(alteraAta_campoEncamin.getText());
+        ata.setApontamento(alteraAta_campoApont.getText());
+        ata.setId_documento(idDocSelected);
+        
+        AtaBO bo = new AtaBO();
+        try {
+            bo.alterar(ata);
+            JOptionPane.showMessageDialog(this, "Alterado com Sucesso!");
+            showTela("card6");
+        } catch (NegocioException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_botaoSalvarAtaAlteracaoActionPerformed
 
     private void botaoCancelarAtoAlteracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarAtoAlteracaoActionPerformed
@@ -1612,7 +1632,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoCancelarAtoAlteracaoActionPerformed
 
     private void botaoSalvarAtoAlteracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarAtoAlteracaoActionPerformed
-        // botao de salvar da tela de alteração do Ato
+        // tentei resolver o problema mas não consigo
+        Ato ato = new Ato();
+        getIdDocSelected(1);
+        ato.setLocal(alteraAto_campoLocal.getText());
+        ato.setData(alteraAto_campoData.getText());
+        ato.setHorario(alteraAto_campoHorario.getText());
+        ato.setAssunto(alteraAto_campoAssunto.getText());
+        ato.setEncaminhamento(alteraAto_campoEncaminhamento.getText());
+        ato.setId_documento(idDocSelected);
+        
+        AtoBO bo = new AtoBO();
+        try {
+            bo.alterar(ato);
+            JOptionPane.showMessageDialog(this, "Alterado com Sucesso!");
+            showTela("card6");
+        } catch (NegocioException ex) {
+            System.out.println("Erro ao alterar documento. [" + ex + "]");
+        }
     }//GEN-LAST:event_botaoSalvarAtoAlteracaoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
