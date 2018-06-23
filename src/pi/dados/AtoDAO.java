@@ -42,19 +42,16 @@ public class AtoDAO implements IAtoDAO<Ato>{
     @Override
     public void alterar(Ato entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
-        String sql = "UPDATE DOCUMENTO SET TITULO=?, ACESSO=?,"
-                + "LOCAL=?, DATA=?, HORÁRIO=?, ASSUNTO=?, CLASSIFICAÇÃO=?, ENCAMINHAMENTO=? "
-                + "WHERE ID_DOCUMENTO=?";
+        String sql = "UPDATE DOCUMENTO SET LOCAL=?, DATA=?, HORÁRIO=?, ASSUNTO=?,"
+                + " ENCAMINHAMENTO=? WHERE ID_DOCUMENTO=?";
         try {
             PreparedStatement comando = conexao.prepareStatement(sql);
-            comando.setString(1, entidade.getTitulo());
-            comando.setString(3, entidade.getLocal());
-            comando.setString(4, entidade.getData());
-            comando.setString(5, entidade.getHorario());
-            comando.setString(6, entidade.getAssunto());
-            comando.setInt(7, entidade.getClassificacao());
-            comando.setString(8, entidade.getEncaminhamento());
-            comando.setInt(9, entidade.getId_documento());
+            comando.setString(1, entidade.getLocal());
+            comando.setString(2, entidade.getData());
+            comando.setString(3, entidade.getHorario());
+            comando.setString(4, entidade.getAssunto());
+            comando.setString(5, entidade.getEncaminhamento());
+            comando.setInt(6, entidade.getId_documento());
             comando.execute();
             conexao.close();
         } catch (SQLDataException ex) {

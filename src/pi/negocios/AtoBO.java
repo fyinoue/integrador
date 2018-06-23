@@ -1,6 +1,8 @@
 package pi.negocios;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pi.dados.AtoDAO;
 import pi.dados.DadosException;
 import pi.entidades.Ato;
@@ -35,6 +37,25 @@ public class AtoBO implements IAtoBO<Ato>{
             throw new NegocioException("O campo TITULO é obrigatório!");
         }
     }
+    
+    @Override
+    public void validarAlteracao(Ato entidade) throws NegocioException {
+        if (entidade.getLocal().isEmpty()) {
+            throw new NegocioException("O campo LOCAL é obrigatório!");
+        }
+        if (entidade.getData().isEmpty()) {
+            throw new NegocioException("O campo DATA é obrigatório!");
+        }
+        if (entidade.getHorario().isEmpty()) {
+            throw new NegocioException("O campo HORARIO é obrigatório!");
+        }
+        if (entidade.getAssunto().isEmpty()) {
+            throw new NegocioException("O campo ASSUNTO é obrigatório!");
+        }
+        if (entidade.getEncaminhamento().isEmpty()) {
+            throw new NegocioException("O campo ENCAMINHAMENTO é obrigatório!");
+        }
+    }
 
     @Override
     public void inserir(Ato entidade) throws NegocioException {
@@ -49,7 +70,13 @@ public class AtoBO implements IAtoBO<Ato>{
 
     @Override
     public void alterar(Ato entidade) throws NegocioException {
-        
+        validarAlteracao(entidade);
+        AtoDAO dao = new AtoDAO();
+        try {
+            dao.alterar(entidade);
+        } catch (DadosException ex) {
+            throw new NegocioException("Falha na operação", ex);
+        }
     }
 
     @Override

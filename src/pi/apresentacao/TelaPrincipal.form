@@ -869,11 +869,11 @@
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="criaAto_campoData" alignment="0" min="-2" pref="151" max="-2" attributes="0"/>
                                       <Component id="criaAto_campoTipo" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="criaAto_campoEncaminhamento" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="criaAto_campoHorario" alignment="0" max="32767" attributes="0"/>
                                       <Component id="criaAto_campoLocal" alignment="0" min="-2" pref="370" max="-2" attributes="0"/>
+                                      <Component id="criaAto_campoHorario" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="criaAto_campoData" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="174" max="-2" attributes="0"/>
                               </Group>
@@ -1817,11 +1817,11 @@
                                       </Group>
                                   </Group>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="alteraAto_campoData" alignment="0" min="-2" pref="151" max="-2" attributes="0"/>
                                       <Component id="alteraAto_campoTipo" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="alteraAto_campoEncaminhamento" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="alteraAto_campoHorario" alignment="0" max="32767" attributes="0"/>
                                       <Component id="alteraAto_campoLocal" alignment="0" min="-2" pref="370" max="-2" attributes="0"/>
+                                      <Component id="alteraAto_campoHorario" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="alteraAto_campoData" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="174" max="-2" attributes="0"/>
                               </Group>

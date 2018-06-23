@@ -9,6 +9,8 @@ public interface IAtaBO<T> {
 
     void validarCriacao(T entidade) throws NegocioException;
     
+    void validarAlteracao(T entidade) throws NegocioException;
+    
     void inserir(T entidade) throws NegocioException;
 
     void alterar(T entidade) throws NegocioException;
