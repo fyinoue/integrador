@@ -215,7 +215,7 @@
                       <Component id="painelCombos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="painelBotoes" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="300" max="32767" attributes="0"/>
+                      <EmptySpace pref="299" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -374,19 +374,19 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="823" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="822" max="32767" attributes="0"/>
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="0" pref="220" max="32767" attributes="0"/>
                                   <Component id="criaAta_labelCriar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="221" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="220" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="92" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="88" max="32767" attributes="0"/>
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -584,8 +584,8 @@
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="2" rowCount="4">
+                                <Column editable="true" title="ID Convidado" type="java.lang.Object"/>
                                 <Column editable="true" title="Nome" type="java.lang.Object"/>
-                                <Column editable="true" title="Presente?" type="java.lang.Object"/>
                               </Table>
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -854,8 +854,10 @@
                                       <Component id="criaAto_campoTipo" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="criaAto_campoEncaminhamento" alignment="0" max="32767" attributes="0"/>
                                       <Component id="criaAto_campoLocal" alignment="0" min="-2" pref="370" max="-2" attributes="0"/>
-                                      <Component id="criaAto_campoHorario" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="criaAto_campoData" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="criaAto_campoHorario" alignment="0" pref="171" max="32767" attributes="0"/>
+                                          <Component id="criaAto_campoData" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -987,13 +989,19 @@
                         <Component class="javax.swing.JTable" name="criaAto_tabelaAprovadores">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="2" rowCount="4">
-                                <Column editable="false" title="N&#xed;vel de Aprova&#xe7;&#xe3;o" type="java.lang.Object"/>
-                                <Column editable="false" title="Nome" type="java.lang.Object"/>
+                              <Table columnCount="3" rowCount="4">
+                                <Column editable="true" title="ID Aprovador" type="java.lang.Object"/>
+                                <Column editable="true" title="N&#xed;vel de Aprova&#xe7;&#xe3;o" type="java.lang.Object"/>
+                                <Column editable="true" title="Nome" type="java.lang.Object"/>
                               </Table>
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                               <TableColumnModel selectionModel="0">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
                                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                   <Title/>
                                   <Editor/>
@@ -1289,12 +1297,12 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="823" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="822" max="32767" attributes="0"/>
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="0" pref="205" max="32767" attributes="0"/>
                                   <Component id="alteraAta_labelAlterar2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="205" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="204" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -1353,10 +1361,12 @@
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="alteraAta_campoData" min="-2" pref="120" max="-2" attributes="0"/>
-                                              <Component id="alteraAta_campoHorario" min="-2" pref="120" max="-2" attributes="0"/>
                                               <Component id="alteraAta_campoTipo" min="-2" max="-2" attributes="0"/>
                                               <Component id="alteraAta_campoEncamin" min="-2" pref="326" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="alteraAta_campoHorario" alignment="0" pref="132" max="32767" attributes="0"/>
+                                                  <Component id="alteraAta_campoData" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
@@ -1551,9 +1561,23 @@
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="2" rowCount="4">
+                                <Column editable="true" title="ID Convidado" type="java.lang.Object"/>
                                 <Column editable="true" title="Nome" type="java.lang.Object"/>
-                                <Column editable="true" title="Presente?" type="java.lang.Object"/>
                               </Table>
+                            </Property>
+                            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                              <TableColumnModel selectionModel="0">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                              </TableColumnModel>
                             </Property>
                             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -1821,11 +1845,16 @@
                                           </Group>
                                           <EmptySpace max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="alteraAto_campoTipo" min="-2" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="alteraAto_campoLocal" alignment="1" min="-2" pref="370" max="-2" attributes="0"/>
-                                                  <Component id="alteraAto_campoData" alignment="1" min="-2" pref="370" max="-2" attributes="0"/>
-                                                  <Component id="alteraAto_campoHorario" alignment="1" min="-2" pref="370" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                                  <Component id="alteraAto_campoTipo" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="alteraAto_campoLocal" min="-2" pref="370" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Group type="103" groupAlignment="1" attributes="0">
+                                                      <Component id="alteraAto_campoHorario" alignment="1" min="-2" pref="154" max="-2" attributes="0"/>
+                                                      <Component id="alteraAto_campoData" min="-2" pref="154" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace min="-2" pref="216" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -2002,10 +2031,30 @@
                         <Component class="javax.swing.JTable" name="alteraAto_tabelaAprovadores">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="2" rowCount="4">
-                                <Column editable="false" title="N&#xed;vel de Aprova&#xe7;&#xe3;o" type="java.lang.Object"/>
-                                <Column editable="false" title="Nome" type="java.lang.Object"/>
+                              <Table columnCount="3" rowCount="4">
+                                <Column editable="true" title="ID Aprovador" type="java.lang.Object"/>
+                                <Column editable="true" title="N&#xed;vel de Aprova&#xe7;&#xe3;o" type="java.lang.Object"/>
+                                <Column editable="true" title="Nome" type="java.lang.Object"/>
                               </Table>
+                            </Property>
+                            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                              <TableColumnModel selectionModel="0">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                              </TableColumnModel>
                             </Property>
                             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -2113,7 +2162,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="833" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="831" max="32767" attributes="0"/>
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
@@ -2393,8 +2442,8 @@
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="2" rowCount="4">
-                                <Column editable="true" title="Nome" type="java.lang.Object"/>
-                                <Column editable="true" title="Presente?" type="java.lang.Object"/>
+                                <Column editable="false" title="Nome" type="java.lang.Object"/>
+                                <Column editable="false" title="ID Convidado" type="java.lang.Object"/>
                               </Table>
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -2841,18 +2890,18 @@
                     </Container>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="consultaAto_painelConvidados">
+                <Container class="javax.swing.JPanel" name="consultaAto_painelAprovadores">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Convidados"/>
+                        <TitledBorder title="Aprovadores"/>
                       </Border>
                     </Property>
                   </Properties>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
                   <SubComponents>
-                    <Container class="javax.swing.JScrollPane" name="consultaAto_rolagemConvidados">
+                    <Container class="javax.swing.JScrollPane" name="consultaAto_rolagemAprovadores">
                       <Properties>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[500, 130]"/>
@@ -2864,16 +2913,22 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="consultaAto_tabelaConvidados">
+                        <Component class="javax.swing.JTable" name="consultaAto_tabelaAprovadores">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="2" rowCount="4">
-                                <Column editable="true" title="Nome" type="java.lang.Object"/>
-                                <Column editable="true" title="Presente?" type="java.lang.Object"/>
+                              <Table columnCount="3" rowCount="4">
+                                <Column editable="false" title="ID Aprovador" type="java.lang.Object"/>
+                                <Column editable="false" title="N&#xed;vel de Aprova&#xe7;&#xe3;o" type="java.lang.Object"/>
+                                <Column editable="false" title="Nome" type="java.lang.Object"/>
                               </Table>
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                               <TableColumnModel selectionModel="0">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
                                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                   <Title/>
                                   <Editor/>
