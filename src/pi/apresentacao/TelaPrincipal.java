@@ -8,12 +8,19 @@ package pi.apresentacao;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import pi.entidades.Aprovador;
 import pi.entidades.Ata;
 import pi.entidades.Ato;
+import pi.entidades.Convidado;
+import pi.negocios.AprovadorBO;
 import pi.negocios.AtaBO;
 import pi.negocios.AtoBO;
+import pi.negocios.ConvidadoBO;
 import pi.negocios.NegocioException;
 
 /**
@@ -337,9 +344,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         consultaAto_campoTipo = new javax.swing.JComboBox<>();
         consultaAto_labelEncamin = new javax.swing.JLabel();
         consultaAto_campoEncamin = new javax.swing.JTextField();
-        consultaAto_painelConvidados = new javax.swing.JPanel();
-        consultaAto_rolagemConvidados = new javax.swing.JScrollPane();
-        consultaAto_tabelaConvidados = new javax.swing.JTable();
+        consultaAto_painelAprovadores = new javax.swing.JPanel();
+        consultaAto_rolagemAprovadores = new javax.swing.JScrollPane();
+        consultaAto_tabelaAprovadores = new javax.swing.JTable();
         consultaAto_painelAssunto = new javax.swing.JPanel();
         consultaAto_rolagemAssunto = new javax.swing.JScrollPane();
         consultaAto_campoAssunto = new javax.swing.JTextArea();
@@ -467,7 +474,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(painelCombos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(painelBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(300, Short.MAX_VALUE))
+                .addContainerGap(299, Short.MAX_VALUE))
         );
 
         conteiner.add(painelCriar, "card3");
@@ -488,16 +495,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
         criaAta_painelTitulo.setLayout(criaAta_painelTituloLayout);
         criaAta_painelTituloLayout.setHorizontalGroup(
             criaAta_painelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 823, Short.MAX_VALUE)
+            .addGap(0, 822, Short.MAX_VALUE)
             .addGroup(criaAta_painelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(criaAta_painelTituloLayout.createSequentialGroup()
                     .addGap(0, 220, Short.MAX_VALUE)
                     .addComponent(criaAta_labelCriar)
-                    .addGap(0, 221, Short.MAX_VALUE)))
+                    .addGap(0, 220, Short.MAX_VALUE)))
         );
         criaAta_painelTituloLayout.setVerticalGroup(
             criaAta_painelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 92, Short.MAX_VALUE)
+            .addGap(0, 88, Short.MAX_VALUE)
             .addGroup(criaAta_painelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(criaAta_painelTituloLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -595,7 +602,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 {null, null}
             },
             new String [] {
-                "Nome", "Presente?"
+                "ID Convidado", "Nome"
             }
         ));
         criaAta_rolagemConvidados.setViewportView(criaAta_tabelaConvidados);
@@ -739,8 +746,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(criaAto_campoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(criaAto_campoEncaminhamento)
                     .addComponent(criaAto_campoLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(criaAto_campoHorario)
-                    .addComponent(criaAto_campoData))
+                    .addGroup(criaAto_painelDadosDoAtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(criaAto_campoHorario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                        .addComponent(criaAto_campoData, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         criaAto_painelDadosDoAtoLayout.setVerticalGroup(
@@ -779,23 +787,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         criaAto_tabelaAprovadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Nível de Aprovação", "Nome"
+                "ID Aprovador", "Nível de Aprovação", "Nome"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         criaAto_rolagemAprovadores.setViewportView(criaAto_tabelaAprovadores);
 
         criaAto_painelAprovadores.add(criaAto_rolagemAprovadores);
@@ -962,12 +962,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         alteraAta_painelTitulo2.setLayout(alteraAta_painelTitulo2Layout);
         alteraAta_painelTitulo2Layout.setHorizontalGroup(
             alteraAta_painelTitulo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 823, Short.MAX_VALUE)
+            .addGap(0, 822, Short.MAX_VALUE)
             .addGroup(alteraAta_painelTitulo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(alteraAta_painelTitulo2Layout.createSequentialGroup()
                     .addGap(0, 205, Short.MAX_VALUE)
                     .addComponent(alteraAta_labelAlterar2)
-                    .addGap(0, 205, Short.MAX_VALUE)))
+                    .addGap(0, 204, Short.MAX_VALUE)))
         );
         alteraAta_painelTitulo2Layout.setVerticalGroup(
             alteraAta_painelTitulo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1025,10 +1025,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addComponent(alteraAta_labelData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(alteraAta_painelDadosDaAtaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(alteraAta_campoData, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(alteraAta_campoHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(alteraAta_campoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(alteraAta_campoEncamin, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(alteraAta_campoEncamin, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(alteraAta_painelDadosDaAtaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(alteraAta_campoHorario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                                .addComponent(alteraAta_campoData, javax.swing.GroupLayout.Alignment.LEADING))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, alteraAta_painelDadosDaAtaLayout.createSequentialGroup()
                         .addComponent(alteraAta_labelLocal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
@@ -1093,7 +1094,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 {null, null}
             },
             new String [] {
-                "Nome", "Presente?"
+                "ID Convidado", "Nome"
             }
         ));
         alteraAta_rolagemConvidados.setViewportView(alteraAta_tabelaConvidados);
@@ -1255,11 +1256,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addComponent(alteraAto_labelTipo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(alteraAto_painelDadosDoAtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(alteraAto_campoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(alteraAto_painelDadosDoAtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(alteraAto_campoLocal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(alteraAto_campoData, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(alteraAto_campoHorario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, alteraAto_painelDadosDoAtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(alteraAto_campoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(alteraAto_campoLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, alteraAto_painelDadosDoAtoLayout.createSequentialGroup()
+                                .addGroup(alteraAto_painelDadosDoAtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(alteraAto_campoHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(alteraAto_campoData, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(216, 216, 216)))))
                 .addContainerGap())
         );
         alteraAto_painelDadosDoAtoLayout.setVerticalGroup(
@@ -1306,23 +1310,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         alteraAto_tabelaAprovadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Nível de Aprovação", "Nome"
+                "ID Aprovador", "Nível de Aprovação", "Nome"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         alteraAto_rolagemAprovadores.setViewportView(alteraAto_tabelaAprovadores);
 
         alteraAto_painelAprovadores.add(alteraAto_rolagemAprovadores);
@@ -1381,7 +1377,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         consultaAta_painelTitulo.setLayout(consultaAta_painelTituloLayout);
         consultaAta_painelTituloLayout.setHorizontalGroup(
             consultaAta_painelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 833, Short.MAX_VALUE)
+            .addGap(0, 831, Short.MAX_VALUE)
             .addGroup(consultaAta_painelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(consultaAta_painelTituloLayout.createSequentialGroup()
                     .addGap(39, 39, 39)
@@ -1528,9 +1524,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 {null, null}
             },
             new String [] {
-                "Nome", "Presente?"
+                "Nome", "ID Convidado"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         consultaAta_rolagemConvidados.setViewportView(consultaAta_tabelaConvidados);
 
         consultaAta_painelConvidados.add(consultaAta_rolagemConvidados);
@@ -1743,26 +1747,34 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         painelConsultaAto.add(consultaAto_painelDados);
 
-        consultaAto_painelConvidados.setBorder(javax.swing.BorderFactory.createTitledBorder("Convidados"));
+        consultaAto_painelAprovadores.setBorder(javax.swing.BorderFactory.createTitledBorder("Aprovadores"));
 
-        consultaAto_rolagemConvidados.setPreferredSize(new java.awt.Dimension(500, 130));
+        consultaAto_rolagemAprovadores.setPreferredSize(new java.awt.Dimension(500, 130));
 
-        consultaAto_tabelaConvidados.setModel(new javax.swing.table.DefaultTableModel(
+        consultaAto_tabelaAprovadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Nome", "Presente?"
+                "ID Aprovador", "Nível de Aprovação", "Nome"
             }
-        ));
-        consultaAto_rolagemConvidados.setViewportView(consultaAto_tabelaConvidados);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
-        consultaAto_painelConvidados.add(consultaAto_rolagemConvidados);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        consultaAto_rolagemAprovadores.setViewportView(consultaAto_tabelaAprovadores);
 
-        painelConsultaAto.add(consultaAto_painelConvidados);
+        consultaAto_painelAprovadores.add(consultaAto_rolagemAprovadores);
+
+        painelConsultaAto.add(consultaAto_painelAprovadores);
 
         consultaAto_painelAssunto.setBorder(javax.swing.BorderFactory.createTitledBorder("Assuntos"));
 
@@ -1924,7 +1936,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 System.out.println("Erro ao criar Ato.");
             }
         }
-
     }//GEN-LAST:event_botaoConfirmarActionPerformed
 
     private void botaoCancelarAtaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarAtaActionPerformed
@@ -2010,6 +2021,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
         } catch (NegocioException ex) {
             System.out.println("Erro ao consultar documento.");
         }
+        
+        //listar aprovadores na tabela
+        AprovadorBO bo = new AprovadorBO();
+        try {
+            List<Aprovador> lista = bo.listar();
+            
+            DefaultTableModel modelo = (DefaultTableModel) alteraAto_tabelaAprovadores.getModel();
+            modelo.setNumRows(0);
+            for(Aprovador aprovador : lista){
+                modelo.addRow(new Object[]{
+                    aprovador.getId_aprovador(),
+                    aprovador.getNivel_aprovador(),
+                    aprovador.getNome()
+                });
+            }
+        } catch (NegocioException ex) {
+            System.out.println("Erro ao listar Aprovadores.");
+        }
     }//GEN-LAST:event_botaoAlterarAtoActionPerformed
 
     private void botaoAlterarAtaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAlterarAtaActionPerformed
@@ -2032,6 +2061,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
             showTela("card7");
         } catch (NegocioException ex) {
             System.out.println("Erro ao consultar documento.");
+        }
+        
+        //listar convidados na tabela
+        ConvidadoBO bo = new ConvidadoBO();
+        try {
+            List<Convidado> lista = bo.listar();
+            
+            DefaultTableModel modelo = (DefaultTableModel) alteraAta_tabelaConvidados.getModel();
+            modelo.setNumRows(0);
+            for(Convidado convidado : lista){
+                modelo.addRow(new Object[]{
+                    convidado.getId_convidado(),
+                    convidado.getNome()
+                });
+            }
+        } catch (NegocioException ex) {
+            System.out.println("Erro ao listar Convidados.");
         }
     }//GEN-LAST:event_botaoAlterarAtaActionPerformed
 
@@ -2096,6 +2142,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
         } catch (NegocioException ex) {
             System.out.println("Erro ao consultar documento.");
         }
+        
+        //listar aprovadores na tabela
+        AprovadorBO bo = new AprovadorBO();
+        try {
+            List<Aprovador> lista = bo.listar();
+            
+            DefaultTableModel modelo = (DefaultTableModel) consultaAto_tabelaAprovadores.getModel();
+            modelo.setNumRows(0);
+            for(Aprovador aprovador : lista){
+                modelo.addRow(new Object[]{
+                    aprovador.getId_aprovador(),
+                    aprovador.getNivel_aprovador(),
+                    aprovador.getNome()
+                });
+            }
+        } catch (NegocioException ex) {
+            System.out.println("Erro ao listar Aprovadores.");
+        }
     }//GEN-LAST:event_botaoConsultarAtoActionPerformed
 
     private void botaoConsultarAtaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConsultarAtaActionPerformed
@@ -2118,6 +2182,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
             showTela("card9");
         } catch (NegocioException ex) {
             System.out.println("Erro ao consultar documento.");
+        }
+        
+        //listar convidados na tabela
+        ConvidadoBO bo = new ConvidadoBO();
+        try {
+            List<Convidado> lista = bo.listar();
+            
+            DefaultTableModel modelo = (DefaultTableModel) consultaAta_tabelaConvidados.getModel();
+            modelo.setNumRows(0);
+            for(Convidado convidado : lista){
+                modelo.addRow(new Object[]{
+                    convidado.getId_convidado(),
+                    convidado.getNome()
+                });
+            }
+        } catch (NegocioException ex) {
+            System.out.println("Erro ao listar Convidados.");
         }
     }//GEN-LAST:event_botaoConsultarAtaActionPerformed
 
@@ -2327,15 +2408,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel consultaAto_labelLocal;
     private javax.swing.JLabel consultaAto_labelTipo;
     private javax.swing.JLabel consultaAto_labelTitulo;
+    private javax.swing.JPanel consultaAto_painelAprovadores;
     private javax.swing.JPanel consultaAto_painelAssunto;
     private javax.swing.JPanel consultaAto_painelBotao;
-    private javax.swing.JPanel consultaAto_painelConvidados;
     private javax.swing.JPanel consultaAto_painelDados;
     private javax.swing.JPanel consultaAto_painelDadosDoAto;
     private javax.swing.JPanel consultaAto_painelTitulo;
+    private javax.swing.JScrollPane consultaAto_rolagemAprovadores;
     private javax.swing.JScrollPane consultaAto_rolagemAssunto;
-    private javax.swing.JScrollPane consultaAto_rolagemConvidados;
-    private javax.swing.JTable consultaAto_tabelaConvidados;
+    private javax.swing.JTable consultaAto_tabelaAprovadores;
     private javax.swing.JPanel conteiner;
     private javax.swing.JTextArea criaAta_campoApont;
     private javax.swing.JTextArea criaAta_campoAssunto;
