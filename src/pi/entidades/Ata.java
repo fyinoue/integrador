@@ -12,22 +12,31 @@ package pi.entidades;
 public class Ata {
     private int id_documento;
     private String titulo;
+    private int classificacao;
+    private String modelo;
     private String local;
     private String data;
     private String horario;
-    private String assunto;
-    private int classificacao;
+    private int tipo;
     private String encaminhamento;
-    private String modelo;
+    private String assunto;
     private String apontamento;
+    private String decisoes;
 
     @Override
     public String toString() {
-        return "Ata{" + "id_documento=" + id_documento + ", titulo=" + titulo + 
-                ", local=" + local + ", data=" + data + ", horario=" + horario + 
-                ", assunto=" + assunto + ", classificacao=" + classificacao + 
-                ", encaminhamento=" + encaminhamento + ", modelo=" + modelo + 
-                ", apontamento=" + apontamento + '}';
+        return "Ata{" + "id_documento=" + id_documento +
+                        ", titulo=" + titulo + 
+                        ", classificacao=" + classificacao + 
+                        ", modelo=" + modelo + 
+                        ", local=" + local +
+                        ", data=" + data +
+                        ", horario=" + horario + 
+                        ", tipo=" + tipo +
+                        ", encaminhamento=" + encaminhamento +
+                        ", assunto=" + assunto + 
+                        ", apontamento=" + apontamento +
+                        ", decisoes=" + decisoes + '}';
     }
 
     public int getId_documento() {
@@ -46,6 +55,22 @@ public class Ata {
         this.titulo = titulo;
     }
 
+    public int getClassificacao() {
+        return classificacao;
+    }
+
+    public void setClassificacao(int classificacao) {
+        this.classificacao = classificacao;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+    
     public String getLocal() {
         return local;
     }
@@ -70,20 +95,12 @@ public class Ata {
         this.horario = horario;
     }
 
-    public String getAssunto() {
-        return assunto;
+    public int getTipo() {
+        return tipo;
     }
 
-    public void setAssunto(String assunto) {
-        this.assunto = assunto;
-    }
-
-    public int getClassificacao() {
-        return classificacao;
-    }
-
-    public void setClassificacao(int classificacao) {
-        this.classificacao = classificacao;
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
     }
 
     public String getEncaminhamento() {
@@ -92,14 +109,14 @@ public class Ata {
 
     public void setEncaminhamento(String encaminhamento) {
         this.encaminhamento = encaminhamento;
+    }    
+
+    public String getAssunto() {
+        return assunto;
     }
 
-    public String getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
+    public void setAssunto(String assunto) {
+        this.assunto = assunto;
     }
 
     public String getApontamento() {
@@ -108,5 +125,13 @@ public class Ata {
 
     public void setApontamento(String apontamento) {
         this.apontamento = apontamento;
+    }
+
+    public String getDecisoes() {
+        return decisoes;
+    }
+
+    public void setDecisoes(String decisoes) {
+        this.decisoes = decisoes;
     }
 }

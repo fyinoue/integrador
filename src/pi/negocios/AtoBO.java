@@ -21,11 +21,11 @@ public class AtoBO implements IAtoBO<Ato>{
         if (entidade.getHorario().isEmpty()) {
             throw new NegocioException("O campo HORARIO é obrigatório!");
         }
-        if (entidade.getAssunto().isEmpty()) {
-            throw new NegocioException("O campo ASSUNTO é obrigatório!");
-        }
         if (entidade.getEncaminhamento().isEmpty()) {
             throw new NegocioException("O campo ENCAMINHAMENTO é obrigatório!");
+        }
+        if (entidade.getAssunto().isEmpty()) {
+            throw new NegocioException("O campo ASSUNTO é obrigatório!");
         }
     }
 
@@ -49,12 +49,23 @@ public class AtoBO implements IAtoBO<Ato>{
 
     @Override
     public void alterar(Ato entidade) throws NegocioException {
-        
+        validar(entidade);
+        AtoDAO dao = new AtoDAO();
+        try {
+            dao.alterar(entidade);
+        } catch (DadosException ex) {
+            throw new NegocioException("Falha na operação", ex);
+        }
     }
 
     @Override
     public void excluir(Ato entidade) throws NegocioException {
-        
+        AtoDAO dao = new AtoDAO();
+        try {
+            dao.excluir(entidade);
+        } catch (DadosException ex) {
+            throw new NegocioException("Falha na operação", ex);
+        }
     }
 
     @Override
@@ -62,7 +73,7 @@ public class AtoBO implements IAtoBO<Ato>{
         AtoDAO dao = new AtoDAO();
         try {
             Ato ato = dao.consultar(id);
-            if (ato.getId_documento() == 0) {
+            if (ato.getTitulo() == null) {
                 throw new NegocioException("Documento não encontrado");
             }
             return ato;
