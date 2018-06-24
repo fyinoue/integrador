@@ -2037,10 +2037,41 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoExcluirAtaActionPerformed
 
     private void botaoConsultarAtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConsultarAtoActionPerformed
+        AtoBO bo = new AtoBO();
+        Ato ato = new Ato();
+
+        try {
+            getIdDocSelected(1);
+            ato = bo.consultar(idDocSelected);//mudar esse conultar 
+            consultaAto_campoLocal.setText(ato.getLocal());
+            consultaAto_campoData.setText(ato.getData());
+            consultaAto_campoHorario.setText(ato.getHorario());
+            //o campo tipo não está no banco pra alterar
+            consultaAto_campoEncamin.setText(ato.getEncaminhamento());
+            consultaAto_campoAssunto.setText(ato.getAssunto());
+        } catch (NegocioException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         showTela("card10");
     }//GEN-LAST:event_botaoConsultarAtoActionPerformed
 
     private void botaoConsultarAtaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConsultarAtaActionPerformed
+        AtaBO bo = new AtaBO();
+        Ata ata = new Ata();
+
+        try {
+            getIdDocSelected(2);
+            ata = bo.consultar(idDocSelected);
+            consultaAta_campoLocal.setText(ata.getLocal());
+            consultaAta_campoData.setText(ata.getData());
+            consultaAta_campoHorario.setText(ata.getHorario());
+            //o campo tipo não está no banco pra alterar
+            consultaAta_campoEncamin.setText(ata.getEncaminhamento());
+            consultaAta_campoAssunto.setText(ata.getAssunto());
+            consultaAta_campoApont.setText(ata.getApontamento());
+        } catch (NegocioException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         showTela("card9");
     }//GEN-LAST:event_botaoConsultarAtaActionPerformed
 
