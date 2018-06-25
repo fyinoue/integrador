@@ -170,9 +170,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         criaAta_campoTipo = new javax.swing.JComboBox<>();
         criaAta_labelEncamin = new javax.swing.JLabel();
         criaAta_campoEncamin = new javax.swing.JTextField();
-        criaAta_painelConvidados = new javax.swing.JPanel();
-        criaAta_rolagemConvidados = new javax.swing.JScrollPane();
-        criaAta_tabelaConvidados = new javax.swing.JTable();
         criaAta_painelAssunto = new javax.swing.JPanel();
         criaAta_rolagemAssunto = new javax.swing.JScrollPane();
         criaAta_campoAssunto = new javax.swing.JTextArea();
@@ -201,9 +198,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         criaAto_campoTipo = new javax.swing.JComboBox<>();
         criaAto_labelEncaminhamento = new javax.swing.JLabel();
         criaAto_campoEncaminhamento = new javax.swing.JTextField();
-        criaAto_painelAprovadores = new javax.swing.JPanel();
-        criaAto_rolagemAprovadores = new javax.swing.JScrollPane();
-        criaAto_tabelaAprovadores = new javax.swing.JTable();
         criaAto_painelAssunto = new javax.swing.JPanel();
         criaAto_rolagemAssunto = new javax.swing.JScrollPane();
         criaAto_campoAssunto = new javax.swing.JTextArea();
@@ -246,9 +240,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         alteraAta_campoTipo = new javax.swing.JComboBox<>();
         alteraAta_labelEncamin = new javax.swing.JLabel();
         alteraAta_campoEncamin = new javax.swing.JTextField();
-        alteraAta_painelConvidados = new javax.swing.JPanel();
-        alteraAta_rolagemConvidados = new javax.swing.JScrollPane();
-        alteraAta_tabelaConvidados = new javax.swing.JTable();
         alteraAta_painelAssunto = new javax.swing.JPanel();
         alteraAta_rolagemAssunto = new javax.swing.JScrollPane();
         alteraAta_campoAssunto = new javax.swing.JTextArea();
@@ -281,9 +272,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         alteraAto_campoTipo = new javax.swing.JComboBox<>();
         alteraAto_labelEncaminhamento = new javax.swing.JLabel();
         alteraAto_campoEncaminhamento = new javax.swing.JTextField();
-        alteraAto_painelAprovadores = new javax.swing.JPanel();
-        alteraAto_rolagemAprovadores = new javax.swing.JScrollPane();
-        alteraAto_tabelaAprovadores = new javax.swing.JTable();
         alteraAto_painelAssunto = new javax.swing.JPanel();
         alteraAto_rolagemAssunto = new javax.swing.JScrollPane();
         alteraAto_campoAssunto = new javax.swing.JTextArea();
@@ -495,21 +483,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         criaAta_painelTitulo.setLayout(criaAta_painelTituloLayout);
         criaAta_painelTituloLayout.setHorizontalGroup(
             criaAta_painelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 822, Short.MAX_VALUE)
+            .addGap(0, 700, Short.MAX_VALUE)
             .addGroup(criaAta_painelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(criaAta_painelTituloLayout.createSequentialGroup()
-                    .addGap(0, 220, Short.MAX_VALUE)
+                    .addGap(0, 159, Short.MAX_VALUE)
                     .addComponent(criaAta_labelCriar)
-                    .addGap(0, 220, Short.MAX_VALUE)))
+                    .addGap(0, 159, Short.MAX_VALUE)))
         );
         criaAta_painelTituloLayout.setVerticalGroup(
             criaAta_painelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 88, Short.MAX_VALUE)
+            .addGap(0, 122, Short.MAX_VALUE)
             .addGroup(criaAta_painelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(criaAta_painelTituloLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 42, Short.MAX_VALUE)
                     .addComponent(criaAta_labelCriar)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 43, Short.MAX_VALUE)))
         );
 
         painelCriaAta.add(criaAta_painelTitulo);
@@ -554,7 +542,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addGroup(criaAta_painelDadosDaAtaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(criaAta_campoHorario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
                                 .addComponent(criaAta_campoData, javax.swing.GroupLayout.Alignment.LEADING))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, criaAta_painelDadosDaAtaLayout.createSequentialGroup()
+                    .addGroup(criaAta_painelDadosDaAtaLayout.createSequentialGroup()
                         .addComponent(criaAta_labelEncamin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(criaAta_campoEncamin)))
@@ -589,27 +577,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         criaAta_painelDados.add(criaAta_painelDadosDaAta);
 
         painelCriaAta.add(criaAta_painelDados);
-
-        criaAta_painelConvidados.setBorder(javax.swing.BorderFactory.createTitledBorder("Convidados"));
-
-        criaAta_rolagemConvidados.setPreferredSize(new java.awt.Dimension(500, 130));
-
-        criaAta_tabelaConvidados.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "ID Convidado", "Nome"
-            }
-        ));
-        criaAta_rolagemConvidados.setViewportView(criaAta_tabelaConvidados);
-
-        criaAta_painelConvidados.add(criaAta_rolagemConvidados);
-
-        painelCriaAta.add(criaAta_painelConvidados);
 
         criaAta_painelAssunto.setBorder(javax.swing.BorderFactory.createTitledBorder("Assuntos"));
 
@@ -733,7 +700,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         criaAto_painelDadosDoAto.setLayout(criaAto_painelDadosDoAtoLayout);
         criaAto_painelDadosDoAtoLayout.setHorizontalGroup(
             criaAto_painelDadosDoAtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, criaAto_painelDadosDoAtoLayout.createSequentialGroup()
+            .addGroup(criaAto_painelDadosDoAtoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(criaAto_painelDadosDoAtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(criaAto_labelData)
@@ -746,15 +713,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(criaAto_campoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(criaAto_campoEncaminhamento)
                     .addComponent(criaAto_campoLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(criaAto_painelDadosDoAtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(criaAto_campoHorario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
-                        .addComponent(criaAto_campoData, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addComponent(criaAto_campoHorario)
+                    .addComponent(criaAto_campoData))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         criaAto_painelDadosDoAtoLayout.setVerticalGroup(
             criaAto_painelDadosDoAtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(criaAto_painelDadosDoAtoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(19, 19, 19)
                 .addGroup(criaAto_painelDadosDoAtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(criaAto_labelLocal)
                     .addComponent(criaAto_campoLocal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -780,27 +746,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         criaAto_painelDados.add(criaAto_painelDadosDoAto);
 
         painelCriaAto.add(criaAto_painelDados);
-
-        criaAto_painelAprovadores.setBorder(javax.swing.BorderFactory.createTitledBorder("Aprovadores"));
-
-        criaAto_rolagemAprovadores.setPreferredSize(new java.awt.Dimension(500, 130));
-
-        criaAto_tabelaAprovadores.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "ID Aprovador", "Nível de Aprovação", "Nome"
-            }
-        ));
-        criaAto_rolagemAprovadores.setViewportView(criaAto_tabelaAprovadores);
-
-        criaAto_painelAprovadores.add(criaAto_rolagemAprovadores);
-
-        painelCriaAto.add(criaAto_painelAprovadores);
 
         criaAto_painelAssunto.setBorder(javax.swing.BorderFactory.createTitledBorder("Assunto"));
 
@@ -971,7 +916,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         alteraAta_painelTitulo2Layout.setVerticalGroup(
             alteraAta_painelTitulo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 78, Short.MAX_VALUE)
+            .addGap(0, 216, Short.MAX_VALUE)
             .addGroup(alteraAta_painelTitulo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(alteraAta_painelTitulo2Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -1081,27 +1026,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         alteraAta_painelDados.add(alteraAta_painelDadosDaAta);
 
         painelAlteraAta.add(alteraAta_painelDados);
-
-        alteraAta_painelConvidados.setBorder(javax.swing.BorderFactory.createTitledBorder("Convidados"));
-
-        alteraAta_rolagemConvidados.setPreferredSize(new java.awt.Dimension(500, 130));
-
-        alteraAta_tabelaConvidados.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "ID Convidado", "Nome"
-            }
-        ));
-        alteraAta_rolagemConvidados.setViewportView(alteraAta_tabelaConvidados);
-
-        alteraAta_painelConvidados.add(alteraAta_rolagemConvidados);
-
-        painelAlteraAta.add(alteraAta_painelConvidados);
 
         alteraAta_painelAssunto.setBorder(javax.swing.BorderFactory.createTitledBorder("Assuntos"));
 
@@ -1304,27 +1228,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         painelAlteraAto.add(alteraAto_painelDados);
 
-        alteraAto_painelAprovadores.setBorder(javax.swing.BorderFactory.createTitledBorder("Aprovadores"));
-
-        alteraAto_rolagemAprovadores.setPreferredSize(new java.awt.Dimension(500, 130));
-
-        alteraAto_tabelaAprovadores.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "ID Aprovador", "Nível de Aprovação", "Nome"
-            }
-        ));
-        alteraAto_rolagemAprovadores.setViewportView(alteraAto_tabelaAprovadores);
-
-        alteraAto_painelAprovadores.add(alteraAto_rolagemAprovadores);
-
-        painelAlteraAto.add(alteraAto_painelAprovadores);
-
         alteraAto_painelAssunto.setBorder(javax.swing.BorderFactory.createTitledBorder("Assunto"));
 
         alteraAto_rolagemAssunto.setPreferredSize(new java.awt.Dimension(500, 200));
@@ -1386,12 +1289,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         consultaAta_painelTituloLayout.setVerticalGroup(
             consultaAta_painelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 82, Short.MAX_VALUE)
+            .addGap(0, 92, Short.MAX_VALUE)
             .addGroup(consultaAta_painelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, consultaAta_painelTituloLayout.createSequentialGroup()
-                    .addContainerGap(23, Short.MAX_VALUE)
+                    .addContainerGap(27, Short.MAX_VALUE)
                     .addComponent(consultaAta_labelConsulta)
-                    .addContainerGap(22, Short.MAX_VALUE)))
+                    .addContainerGap(28, Short.MAX_VALUE)))
         );
 
         painelConsultaAta.add(consultaAta_painelTitulo);
@@ -2021,24 +1924,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         } catch (NegocioException ex) {
             System.out.println("Erro ao consultar documento.");
         }
-        
-        //listar aprovadores na tabela
-        AprovadorBO bo = new AprovadorBO();
-        try {
-            List<Aprovador> lista = bo.listar();
-            
-            DefaultTableModel modelo = (DefaultTableModel) alteraAto_tabelaAprovadores.getModel();
-            modelo.setNumRows(0);
-            for(Aprovador aprovador : lista){
-                modelo.addRow(new Object[]{
-                    aprovador.getId_aprovador(),
-                    aprovador.getNivel_aprovador(),
-                    aprovador.getNome()
-                });
-            }
-        } catch (NegocioException ex) {
-            System.out.println("Erro ao listar Aprovadores.");
-        }
     }//GEN-LAST:event_botaoAlterarAtoActionPerformed
 
     private void botaoAlterarAtaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAlterarAtaActionPerformed
@@ -2061,23 +1946,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             showTela("card7");
         } catch (NegocioException ex) {
             System.out.println("Erro ao consultar documento.");
-        }
-        
-        //listar convidados na tabela
-        ConvidadoBO bo = new ConvidadoBO();
-        try {
-            List<Convidado> lista = bo.listar();
-            
-            DefaultTableModel modelo = (DefaultTableModel) alteraAta_tabelaConvidados.getModel();
-            modelo.setNumRows(0);
-            for(Convidado convidado : lista){
-                modelo.addRow(new Object[]{
-                    convidado.getId_convidado(),
-                    convidado.getNome()
-                });
-            }
-        } catch (NegocioException ex) {
-            System.out.println("Erro ao listar Convidados.");
         }
     }//GEN-LAST:event_botaoAlterarAtaActionPerformed
 
@@ -2272,13 +2140,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botaoSalvarAtoAlteracaoActionPerformed
 
-    private void botaoVoltarAtaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarAtaActionPerformed
-        showTela("card6");
-    }//GEN-LAST:event_botaoVoltarAtaActionPerformed
-
     private void botaoVoltarAtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarAtoActionPerformed
         showTela("card6");
     }//GEN-LAST:event_botaoVoltarAtoActionPerformed
+
+    private void botaoVoltarAtaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarAtaActionPerformed
+        showTela("card6");
+    }//GEN-LAST:event_botaoVoltarAtaActionPerformed
 
     private void consultaAta_campoClassificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaAta_campoClassificacaoActionPerformed
         // TODO add your handling code here:
@@ -2306,16 +2174,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel alteraAta_painelApont;
     private javax.swing.JPanel alteraAta_painelAssunto;
     private javax.swing.JPanel alteraAta_painelBotoes;
-    private javax.swing.JPanel alteraAta_painelConvidados;
     private javax.swing.JPanel alteraAta_painelDados;
     private javax.swing.JPanel alteraAta_painelDadosDaAta;
     private javax.swing.JPanel alteraAta_painelDecisoes;
     private javax.swing.JPanel alteraAta_painelTitulo2;
     private javax.swing.JScrollPane alteraAta_rolagemApont;
     private javax.swing.JScrollPane alteraAta_rolagemAssunto;
-    private javax.swing.JScrollPane alteraAta_rolagemConvidados;
     private javax.swing.JScrollPane alteraAta_rolagemDecisoes;
-    private javax.swing.JTable alteraAta_tabelaConvidados;
     private javax.swing.JTextArea alteraAto_campoAssunto;
     private javax.swing.JComboBox<String> alteraAto_campoClassificacao;
     private javax.swing.JTextField alteraAto_campoData;
@@ -2332,15 +2197,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel alteraAto_labelLocal;
     private javax.swing.JLabel alteraAto_labelTipo;
     private javax.swing.JLabel alteraAto_labelTitulo;
-    private javax.swing.JPanel alteraAto_painelAprovadores;
     private javax.swing.JPanel alteraAto_painelAssunto;
     private javax.swing.JPanel alteraAto_painelBotoes;
     private javax.swing.JPanel alteraAto_painelDados;
     private javax.swing.JPanel alteraAto_painelDadosDoAto;
     private javax.swing.JPanel alteraAto_painelTitulo;
-    private javax.swing.JScrollPane alteraAto_rolagemAprovadores;
     private javax.swing.JScrollPane alteraAto_rolagemAssunto;
-    private javax.swing.JTable alteraAto_tabelaAprovadores;
     private javax.swing.JButton botaoAlterarAta;
     private javax.swing.JButton botaoAlterarAto;
     private javax.swing.JButton botaoCancelar;
@@ -2435,16 +2297,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel criaAta_painelApont;
     private javax.swing.JPanel criaAta_painelAssunto;
     private javax.swing.JPanel criaAta_painelBotoes;
-    private javax.swing.JPanel criaAta_painelConvidados;
     private javax.swing.JPanel criaAta_painelDados;
     private javax.swing.JPanel criaAta_painelDadosDaAta;
     private javax.swing.JPanel criaAta_painelDecisoes;
     private javax.swing.JPanel criaAta_painelTitulo;
     private javax.swing.JScrollPane criaAta_rolagemApont;
     private javax.swing.JScrollPane criaAta_rolagemAssunto;
-    private javax.swing.JScrollPane criaAta_rolagemConvidados;
     private javax.swing.JScrollPane criaAta_rolagemDecisoes;
-    private javax.swing.JTable criaAta_tabelaConvidados;
     private javax.swing.JTextArea criaAto_campoAssunto;
     private javax.swing.JTextField criaAto_campoData;
     private javax.swing.JTextField criaAto_campoEncaminhamento;
@@ -2457,15 +2316,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel criaAto_labelHorario;
     private javax.swing.JLabel criaAto_labelLocal;
     private javax.swing.JLabel criaAto_labelTipo;
-    private javax.swing.JPanel criaAto_painelAprovadores;
     private javax.swing.JPanel criaAto_painelAssunto;
     private javax.swing.JPanel criaAto_painelBotoes;
     private javax.swing.JPanel criaAto_painelDados;
     private javax.swing.JPanel criaAto_painelDadosDoAto;
     private javax.swing.JPanel criaAto_painelTitulo;
-    private javax.swing.JScrollPane criaAto_rolagemAprovadores;
     private javax.swing.JScrollPane criaAto_rolagemAssunto;
-    private javax.swing.JTable criaAto_tabelaAprovadores;
     private javax.swing.JTextField criaDoc_campoTitulo;
     private javax.swing.JLabel criaDoc_labelTitulo;
     private javax.swing.JMenuItem itemMenuSobre;
