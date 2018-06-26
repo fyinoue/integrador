@@ -39,6 +39,10 @@ public class AtoBO implements IAtoBO<Ato>{
     @Override
     public void inserir(Ato entidade) throws NegocioException {
         validar(entidade);
+        if(entidade.getAssunto().length()>255)
+        {
+            throw new NegocioException("Campo Assunto com muito caracteres(max 255)");
+        }
         AtoDAO dao = new AtoDAO();
         try {
             dao.inserir(entidade);
@@ -88,7 +92,7 @@ public class AtoBO implements IAtoBO<Ato>{
         try {
             List<Ato> lista = dao.listar();
             if (lista.isEmpty()) {
-                throw new NegocioException("Nenhum documento cadastrado");
+                throw new NegocioException("Nenhum documento do tipo Ato cadastrado");
             }
             return lista;
         } catch (DadosException ex) {

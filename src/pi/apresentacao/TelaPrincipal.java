@@ -448,7 +448,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             painelCriarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(labelMenuItemCriar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(painelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(painelCombos, javax.swing.GroupLayout.DEFAULT_SIZE, 841, Short.MAX_VALUE)
+            .addComponent(painelCombos, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
             .addComponent(painelBotoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         painelCriarLayout.setVerticalGroup(
@@ -462,7 +462,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(painelCombos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(painelBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(299, Short.MAX_VALUE))
+                .addContainerGap(213, Short.MAX_VALUE))
         );
 
         conteiner.add(painelCriar, "card3");
@@ -486,9 +486,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGap(0, 700, Short.MAX_VALUE)
             .addGroup(criaAta_painelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(criaAta_painelTituloLayout.createSequentialGroup()
-                    .addGap(0, 159, Short.MAX_VALUE)
+                    .addGap(0, 140, Short.MAX_VALUE)
                     .addComponent(criaAta_labelCriar)
-                    .addGap(0, 159, Short.MAX_VALUE)))
+                    .addGap(0, 139, Short.MAX_VALUE)))
         );
         criaAta_painelTituloLayout.setVerticalGroup(
             criaAta_painelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -714,7 +714,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(criaAto_campoEncaminhamento)
                     .addComponent(criaAto_campoLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(criaAto_campoHorario)
-                    .addComponent(criaAto_campoData))
+                    .addComponent(criaAto_campoData, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         criaAto_painelDadosDoAtoLayout.setVerticalGroup(
@@ -798,7 +798,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         painelAlterarAto.add(painelAlterar_campoAtoFinal);
 
         botaoConsultarAto.setText("Consultar Ato");
-        botaoConsultarAto.setPreferredSize(new java.awt.Dimension(105, 30));
+        botaoConsultarAto.setPreferredSize(new java.awt.Dimension(120, 30));
         botaoConsultarAto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoConsultarAtoActionPerformed(evt);
@@ -833,7 +833,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         painelAlterarAta.add(painelAlterar_campoAtaFinal);
 
         botaoConsultarAta.setText("Consultar Ata");
-        botaoConsultarAta.setPreferredSize(new java.awt.Dimension(105, 30));
+        botaoConsultarAta.setPreferredSize(new java.awt.Dimension(120, 30));
         botaoConsultarAta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoConsultarAtaActionPerformed(evt);
@@ -860,7 +860,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         painelAlterarAta.add(botaoExcluirAta);
 
         painelAlterar_botaoVoltar.setText("Voltar ao Início");
-        painelAlterar_botaoVoltar.setPreferredSize(new java.awt.Dimension(105, 30));
+        painelAlterar_botaoVoltar.setPreferredSize(new java.awt.Dimension(170, 30));
         painelAlterar_botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 painelAlterar_botaoVoltarActionPerformed(evt);
@@ -1289,12 +1289,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         consultaAta_painelTituloLayout.setVerticalGroup(
             consultaAta_painelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 92, Short.MAX_VALUE)
+            .addGap(0, 60, Short.MAX_VALUE)
             .addGroup(consultaAta_painelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, consultaAta_painelTituloLayout.createSequentialGroup()
-                    .addContainerGap(27, Short.MAX_VALUE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(consultaAta_labelConsulta)
-                    .addContainerGap(28, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         painelConsultaAta.add(consultaAta_painelTitulo);
@@ -1416,8 +1416,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         painelConsultaAta.add(consultaAta_painelDados);
 
         consultaAta_painelConvidados.setBorder(javax.swing.BorderFactory.createTitledBorder("Convidados"));
+        consultaAta_painelConvidados.setPreferredSize(new java.awt.Dimension(500, 300));
 
-        consultaAta_rolagemConvidados.setPreferredSize(new java.awt.Dimension(500, 130));
+        consultaAta_rolagemConvidados.setPreferredSize(new java.awt.Dimension(500, 300));
 
         consultaAta_tabelaConvidados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

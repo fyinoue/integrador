@@ -40,6 +40,18 @@ public class AtaBO implements IAtaBO<Ata>{
     @Override
     public void inserir(Ata entidade) throws NegocioException {
         validar(entidade);
+        if(entidade.getApontamento().length()>255)
+        {
+            throw new NegocioException("Campo Apontamento com muito caracteres(max 255)");
+        }
+        if(entidade.getAssunto().length()>255)
+        {
+            throw new NegocioException("Campo Assunto com muito caracteres(max 255)");
+        }
+        if(entidade.getDecisoes().length()>255)
+        {
+            throw new NegocioException("Campo Decisões com muito caracteres(max 255)");
+        }
         AtaDAO dao = new AtaDAO();
         try {
             dao.inserir(entidade);
@@ -89,7 +101,7 @@ public class AtaBO implements IAtaBO<Ata>{
         try {
             List<Ata> lista = dao.listar();
             if (lista.isEmpty()) {
-                throw new NegocioException("Nenhum documento cadastrado");
+                throw new NegocioException("Nenhum documento do tipo Ata cadastrado");
             }
             return lista;
         } catch (DadosException ex) {

@@ -200,7 +200,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="labelMenuItemCriar" alignment="0" max="32767" attributes="0"/>
                   <Component id="painelTitulo" max="32767" attributes="0"/>
-                  <Component id="painelCombos" pref="841" max="32767" attributes="0"/>
+                  <Component id="painelCombos" pref="800" max="32767" attributes="0"/>
                   <Component id="painelBotoes" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
@@ -215,7 +215,7 @@
                       <Component id="painelCombos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="painelBotoes" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="299" max="32767" attributes="0"/>
+                      <EmptySpace pref="213" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -377,9 +377,9 @@
                           <EmptySpace min="0" pref="700" max="32767" attributes="0"/>
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="0" pref="159" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="140" max="32767" attributes="0"/>
                                   <Component id="criaAta_labelCriar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="159" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="139" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -801,7 +801,7 @@
                                       <Component id="criaAto_campoEncaminhamento" alignment="0" max="32767" attributes="0"/>
                                       <Component id="criaAto_campoLocal" alignment="0" min="-2" pref="370" max="-2" attributes="0"/>
                                       <Component id="criaAto_campoHorario" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="criaAto_campoData" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="criaAto_campoData" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -1043,7 +1043,7 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Consultar Ato"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[105, 30]"/>
+                      <Dimension value="[120, 30]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1101,7 +1101,7 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Consultar Ata"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[105, 30]"/>
+                      <Dimension value="[120, 30]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1140,7 +1140,7 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Voltar ao In&#xed;cio"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[105, 30]"/>
+                      <Dimension value="[170, 30]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1944,12 +1944,12 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="92" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="60" max="32767" attributes="0"/>
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="27" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="consultaAta_labelConsulta" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="28" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -2192,6 +2192,9 @@
                         <TitledBorder title="Convidados"/>
                       </Border>
                     </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[500, 300]"/>
+                    </Property>
                   </Properties>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
@@ -2199,7 +2202,7 @@
                     <Container class="javax.swing.JScrollPane" name="consultaAta_rolagemConvidados">
                       <Properties>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[500, 130]"/>
+                          <Dimension value="[500, 300]"/>
                         </Property>
                       </Properties>
                       <AuxValues>

@@ -30,6 +30,7 @@ public class AtaDAO implements IAtaDAO<Ata>{
             comando.setString(9, entidade.getApontamento());
             comando.setInt(10, entidade.getTipo());
             comando.setString(11, entidade.getDecisoes());
+            System.out.println(comando);
             comando.execute();
             conexao.close();
         } catch (SQLException ex) {
